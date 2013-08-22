@@ -1,0 +1,26 @@
+{
+  "device_type": "rtsm_ve-a15x1-a7x1",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_image",
+      "parameters": {
+        "hwpack": "http://community.validation.linaro.org/images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
+        "rootfs": "http://community.validation.linaro.org/images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
+        "bootloader": "uefi"
+      }
+    },
+    {
+      "command": "boot_linaro_image"
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 20000,
+  "job_name": "fastmodel-armv7-device-defined-boot-cmds-uefi"
+}

@@ -1,0 +1,28 @@
+{
+  "device_type": "panda",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_kernel",
+      "parameters": {
+        "kernel": "http://community.validation.linaro.org/images/panda/uImage",
+        "ramdisk": "http://community.validation.linaro.org/images/panda/uInitrd",
+        "dtb": "http://community.validation.linaro.org/images/panda/omap4-panda-es.dtb"
+      }
+    },
+    {
+      "command": "boot_linaro_image"
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "bootloader-device-defined-boot-cmds"
+}
+
+

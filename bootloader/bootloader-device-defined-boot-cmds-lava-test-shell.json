@@ -1,0 +1,40 @@
+{
+  "device_type": "beaglebone-black",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_kernel",
+      "parameters": {
+        "kernel": "http://community.validation.linaro.org/images/bbb/zImage",
+        "ramdisk": "http://community.validation.linaro.org/images/bbb/uInitrd",
+        "dtb": "http://community.validation.linaro.org/images/bbb/am335x-bone.dtb"
+      }
+    },
+    {
+      "command": "boot_linaro_image"
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "openembedded/kernel-version.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "bootloader-device-defined-boot-cmds-lava-test-shell"
+}
+
+

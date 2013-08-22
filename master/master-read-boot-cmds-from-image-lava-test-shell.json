@@ -1,0 +1,37 @@
+{
+  "device_type": "beaglebone-black",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_image",
+      "parameters": {
+        "hwpack": "http://community.validation.linaro.org/images/bbb/hwpack_linaro-beaglebone_20130806-422_armhf_supported.tar.gz",
+        "rootfs": "http://community.validation.linaro.org/images/bbb/linaro-raring-nano-lava-20130806-454.tar.gz"
+      }
+    },
+    {
+      "command": "boot_linaro_image"
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/dmidecode.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "master-read-boot-cmds-from-image-lava-test-shell"
+}

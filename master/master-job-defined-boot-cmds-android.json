@@ -1,0 +1,34 @@
+{
+  "device_type": "arndale",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "boot": "http://community.validation.linaro.org/images/arndale/boot.tar.bz2",
+            "data": "http://community.validation.linaro.org/images/arndale/userdata.tar.bz2",
+            "system": "http://community.validation.linaro.org/images/arndale/system.tar.bz2"
+        }
+    },
+    {
+      "command": "boot_linaro_android_image",
+       "parameters": {
+          "interactive_boot_cmds": true,
+          "options": ["mmc init",
+                      "mmc part 0",
+                      "setenv bootcmd 'fatload mmc 0:5 0x40007000 uImage; fatload mmc 0:5 0x41000000 uInitrd; fatload mmc 0:5 0x41f00000 board.dtb; bootm 0x40007000 0x41000000 0x41f00000'",
+                      "setenv bootargs 'console=tty0 console=ttySAC2,115200n8 androidboot.hardware=exynos5250-arndale rootwait ro rootdelay=3 init=/init androidboot.console=ttySAC2 console=ttySAC2 test'",
+                      "boot"]
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "master-job-defined-boot-cmds-android"
+}

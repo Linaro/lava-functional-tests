@@ -1,0 +1,33 @@
+{
+  "device_type": "beaglebone-black",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_image",
+      "parameters": {
+        "hwpack": "http://community.validation.linaro.org/images/bbb/hwpack_linaro-beaglebone_20130806-422_armhf_supported.tar.gz",
+        "rootfs": "http://community.validation.linaro.org/images/bbb/linaro-raring-nano-lava-20130806-454.tar.gz"
+      }
+    },
+    {
+      "command": "boot_linaro_image",
+       "parameters": {
+          "interactive_boot_cmds": true,
+          "options": ["setenv initrd_high '0xffffffff'",
+                      "setenv fdt_high '0xffffffff'",
+                      "setenv bootcmd 'fatload mmc 0:3 0x80200000 uImage; fatload mmc 0:3 0x81600000 uInitrd; fatload mmc 0:3 0x815f0000 board.dtb; bootm 0x80200000 0x81600000 0x815f0000'",
+                      "setenv bootargs 'console=ttyO0,115200n8 earlyprintk root=LABEL=testrootfs rootwait ro'",
+                      "boot"]
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "master-job-defined-boot-cmds"
+}

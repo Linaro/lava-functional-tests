@@ -1,0 +1,37 @@
+{
+  "device_type": "arndale",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "boot": "http://community.validation.linaro.org/images/arndale/boot.tar.bz2",
+            "data": "http://community.validation.linaro.org/images/arndale/userdata.tar.bz2",
+            "system": "http://community.validation.linaro.org/images/arndale/system.tar.bz2"
+        }
+    }, 
+    {
+      "command": "boot_linaro_android_image"
+    },
+    {
+        "command": "lava_test_shell",
+        "parameters": {
+            "testdef_repos": [
+                {
+                    "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                    "testdef": "android/busybox.yaml"
+                }
+            ]
+        }
+    }, 
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "master-boot-options-boot-cmds-lava-test-shell-android"
+}

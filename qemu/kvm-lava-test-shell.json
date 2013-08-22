@@ -1,0 +1,33 @@
+{
+  "timeout": 18000,
+  "job_name": "kvm-lava-test-shell",
+  "device_type": "kvm",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_image",
+      "parameters": {
+        "image": "file:///srv/lava/instances/production/var/www/lava-server/images/kvm/test_image.img"
+        }
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/dmidecode.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ]
+}

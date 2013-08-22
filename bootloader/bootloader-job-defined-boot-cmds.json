@@ -1,0 +1,43 @@
+{
+  "device_type": "arndale",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_kernel",
+      "parameters": {
+        "kernel": "http://community.validation.linaro.org/images/arndale/uImage",
+        "ramdisk": "http://community.validation.linaro.org/images/arndale/uInitrd",
+        "dtb": "http://community.validation.linaro.org/images/arndale/exynos5250-arndale.dtb"
+      }
+    },
+    {
+      "command": "boot_linaro_image",
+       "parameters": {
+          "interactive_boot_cmds": true,
+          "options": ["setenv autoload no",
+                      "setenv pxefile_addr_r '0x50000000'",
+                      "setenv kernel_addr_r '0x40007000'",
+                      "setenv initrd_addr_r '0x42000000'",
+                      "setenv fdt_addr_r '0x41f00000'",
+                      "setenv loadkernel 'tftp ${kernel_addr_r} ${lava_kernel}'",
+                      "setenv fdt_high '0xffffffff'",
+                      "setenv loadkernel 'tftp ${kernel_addr_r} ${lava_kernel}'",
+                      "setenv loadinitrd 'tftp ${initrd_addr_r} ${lava_ramdisk}; setenv initrd_size ${filesize}'",
+                      "setenv loadfdt 'tftp ${fdt_addr_r} ${lava_dtb}'",
+                      "setenv bootargs 'root=/dev/ram0 console=ttySAC2,115200n8 init --no-log ip=:::::eth0:dhcp'",
+                      "setenv bootcmd 'usb start; dhcp; setenv serverip ${lava_server_ip}; run loadkernel; run loadinitrd; run loadfdt; bootm ${kernel_addr_r} ${initrd_addr_r} ${fdt_addr_r}'",
+                      "boot"]
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "bootloader-job-defined-boot-cmds"
+}
+
