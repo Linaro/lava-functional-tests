@@ -1,0 +1,41 @@
+{
+  "timeout": 18000,
+  "job_name": "fastboot-lava-android-test",
+  "device_type": "galaxy-nexus",
+  "image_type": "android",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_android_image",
+      "parameters": {
+        "data": "http://community.validation.linaro.org/images/galaxy-nexus/userdata.img",
+        "system": "http://community.validation.linaro.org/images/galaxy-nexus/system.img",
+        "boot": "http://community.validation.linaro.org/images/galaxy-nexus/boot.img"
+      }
+    },
+    {
+      "command": "boot_linaro_android_image"
+    },
+    {
+        "command": "lava_android_test_install",
+        "parameters": {
+            "tests": [
+                "busybox"
+            ]
+        }
+    },
+    {
+        "command": "lava_android_test_run",
+        "parameters": {
+            "test_name": "busybox"
+        }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ]
+}

@@ -1,16 +1,13 @@
 {
   "timeout": 18000,
-  "job_name": "kvm-kernel-boot-lava-test-shell",
-  "device_type": "kvm",
-  "logging_level": "DEBUG",
+  "job_name": "qemu-lava-test-shell",
+  "device_type": "qemu",
   "actions": [
     {
-      "command": "deploy_linaro_kernel",
+      "command": "deploy_linaro_image",
       "parameters": {
-        "kernel": "http://community.validation.linaro.org/images/kvm/vmlinuz-3.5.0-17-generic",
-        "ramdisk": "http://community.validation.linaro.org/images/kvm/initrd.img-3.5.0-17-generic",
-        "rootfs": "http://community.validation.linaro.org/images/kvm/kvm_image.img"
-      }
+        "image": "http://community.validation.linaro.org/images/qemu/beagle-nano.img.gz"
+        }
     },
     {
       "command": "lava_test_shell",

@@ -1,6 +1,6 @@
 {
   "timeout": 18000,
-  "job_name": "kvm-kernel-boot-lava-test-shell",
+  "job_name": "kvm-kernel-boot",
   "device_type": "kvm",
   "logging_level": "DEBUG",
   "actions": [
@@ -9,20 +9,11 @@
       "parameters": {
         "kernel": "http://community.validation.linaro.org/images/kvm/vmlinuz-3.5.0-17-generic",
         "ramdisk": "http://community.validation.linaro.org/images/kvm/initrd.img-3.5.0-17-generic",
-        "rootfs": "http://community.validation.linaro.org/images/kvm/kvm_image.img"
+        "rootfs": "file:///srv/lava/instances/production/var/www/lava-server/images/kvm/test_image.img"
       }
     },
     {
-      "command": "lava_test_shell",
-      "parameters": {
-        "testdef_repos": [
-          {
-            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
-            "testdef": "ubuntu/dmidecode.yaml"
-          }
-        ],
-        "timeout": 9600
-      }
+      "command": "boot_linaro_image"
     },
     {
       "command": "submit_results",

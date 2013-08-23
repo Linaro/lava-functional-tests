@@ -1,6 +1,6 @@
 {
   "timeout": 18000,
-  "job_name": "kvm-kernel-boot-lava-test-shell",
+  "job_name": "kvm-kernel-lava-test-shell",
   "device_type": "kvm",
   "logging_level": "DEBUG",
   "actions": [

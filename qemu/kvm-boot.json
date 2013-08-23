@@ -1,6 +1,6 @@
 {
   "timeout": 18000,
-  "job_name": "kvm-lava-test-shell",
+  "job_name": "kvm-boot",
   "device_type": "kvm",
   "logging_level": "DEBUG",
   "actions": [
@@ -11,16 +11,7 @@
         }
     },
     {
-      "command": "lava_test_shell",
-      "parameters": {
-        "testdef_repos": [
-          {
-            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
-            "testdef": "ubuntu/dmidecode.yaml"
-          }
-        ],
-        "timeout": 9600
-      }
+      "command": "boot_linaro_image"
     },
     {
       "command": "submit_results",
