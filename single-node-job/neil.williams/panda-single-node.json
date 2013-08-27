@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://releases.linaro.org/12.02/ubuntu/leb-panda/panda-ubuntu-desktop.img.gz"
+                "image": "http://community.validation.linaro.org/images/panda/panda-raring_developer_20130723-408.img.gz"
             }
         },
         {

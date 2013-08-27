@@ -24,7 +24,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://images.validation.linaro.org/kvm-debian-wheezy.img.gz"
+                "image": "http://community.validation.linaro.org/images/kvm/kvm-image.img"
             }
         },
         {

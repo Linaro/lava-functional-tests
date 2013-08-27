@@ -24,15 +24,15 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "file:///home/codehelp/images/panda-quantal_developer_20130328-278.img.gz",
+                "image": "http://community.validation.linaro.org/images/panda/panda-raring_developer_20130723-408.img.gz",
                 "role": "police"
             }
         },
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "hwpack": "http://snapshots.linaro.org/kernel-hwpack/linux-preempt-rt-arndale/28/hwpack_linaro-arndale_20130723-1644_b28_armhf_supported.tar.gz",
-                "rootfs": "http://snapshots.linaro.org/ubuntu/images/nano-lava/442/linaro-raring-nano-lava-20130725-442.tar.gz",
+                "hwpack": "http://community.validation.linaro.org/images/arndale/hwpack_linaro-arndale_20130827-444_armhf_supported.tar.gz",
+                "rootfs": "http://community.validation.linaro.org/images/arndale/linaro-raring-nano-lava-20130827-475.tar.gz",
                 "role": "public"
             },
             "metadata": {
