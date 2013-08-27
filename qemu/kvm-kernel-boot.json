@@ -9,7 +9,7 @@
       "parameters": {
         "kernel": "http://community.validation.linaro.org/images/kvm/vmlinuz-3.5.0-17-generic",
         "ramdisk": "http://community.validation.linaro.org/images/kvm/initrd.img-3.5.0-17-generic",
-        "rootfs": "file:///srv/lava/instances/production/var/www/lava-server/images/kvm/test_image.img"
+        "rootfs": "http://community.validation.linaro.org/images/kvm/kvm-image.img"
       }
     },
     {
