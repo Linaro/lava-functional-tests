@@ -1,0 +1,36 @@
+{
+  "timeout": 18000,
+  "job_name": "qemu-kernel-lava-test-shell",
+  "device_type": "qemu",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_kernel",
+      "parameters": {
+        "kernel": "http://community.validation.linaro.org/images/beagle/zImage",
+        "ramdisk": "http://community.validation.linaro.org/images/beagle/uInitrd",
+        "dtb": "http://community.validation.linaro.org/images/beagle/omap3-beagle-xm.dtb",
+        "rootfs": "file:///home/tyler/binaries/qemu/beagle-nano.img.gz"
+      }
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/dmidecode.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ]
+}
