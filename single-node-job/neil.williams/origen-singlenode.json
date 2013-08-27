@@ -1,0 +1,38 @@
+{
+    "health_check": false,
+    "logging_level": "DEBUG",
+    "timeout": 900,
+    "job_name": "origen-singlenode",
+    "device_type": "origen",
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://releases.linaro.org/13.01/ubuntu/origen/origen-quantal_developer_20130130-64.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/single-node/singlenode02.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

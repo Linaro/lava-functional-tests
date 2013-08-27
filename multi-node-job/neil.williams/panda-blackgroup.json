@@ -1,0 +1,75 @@
+{
+    "timeout": 900,
+    "job_name": "panda black group test",
+    "logging_level": "INFO",
+    "device_group": [
+        {
+            "role": "police",
+            "count": 1,
+            "device_type": "panda",
+            "tags": [
+                "codehelp-cop"
+            ]
+        },
+        {
+            "role": "colour",
+            "count": 1,
+            "device_type": "beaglebone-black",
+            "tags": [
+                "codehelp-black"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "file:///home/codehelp/images/panda-quantal_developer_20130328-278.img.gz",
+                "role": "police"
+            }
+        },
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "hwpack": "http://snapshots.linaro.org/kernel-hwpack/linux-preempt-rt-arndale/28/hwpack_linaro-arndale_20130723-1644_b28_armhf_supported.tar.gz",
+                "rootfs": "http://snapshots.linaro.org/ubuntu/images/nano-lava/442/linaro-raring-nano-lava-20130725-442.tar.gz",
+                "role": "public"
+            },
+            "metadata": {
+                "distribution": "ubuntu",
+                "hwpack.type": "arndale",
+                "rootfs.type": "nano-lava"
+            }
+        },
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://linaro-gateway/beaglebone/beaglebone_20130625-379.img.gz",
+                "role": "colour"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode03.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

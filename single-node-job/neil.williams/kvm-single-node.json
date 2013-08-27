@@ -1,0 +1,38 @@
+{
+    "health_check": false,
+    "logging_level": "DEBUG",
+    "timeout": 900,
+    "job_name": "kvm-single-node",
+    "device_type": "kvm",
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://images.validation.linaro.org/kvm-debian-wheezy.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/single-node/singlenode03.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

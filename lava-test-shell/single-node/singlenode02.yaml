@@ -1,0 +1,32 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: singlenode-intermediate
+    description: "Intermediate (level 2): single node test commands for Linux Linaro ubuntu Images"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+        - arndale
+        - panda
+        - beaglebone-black
+        - beagle-xm
+
+run:
+    steps:
+        - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
+        - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
+        - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
+        - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - lava-test-case ping-test --shell ping -W1 -c1 multinode.validation.linaro.org
+        - lava-test-case direct-update --shell apt-get -q -y update
+        - lava-test-case direct-install --shell apt-get -q -y install curl
+        - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
+        - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
+        - lava-test-case remove-tgz --shell rm netperf-2.6.0.tar.gz
+        

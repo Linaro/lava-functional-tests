@@ -1,0 +1,42 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: multinode-intermediate-level
+    description: "Intermediate (level 2) MultiNode test commands for Linux Linaro ubuntu Images"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+        - arndale
+        - panda
+        - beaglebone-black
+        - beagle-xm
+
+run:
+    steps:
+        - lava-test-case multinode-role-output --shell lava-role
+        - lava-test-case multinode-sync --shell lava-sync running
+        - lava-test-case multinode-send-message --shell lava-send sending source=$(lava-self) role=$(lava-role) hostname=$(hostname -f) kernver=$(uname -r) kernhost=$(uname -n)
+        - lava-test-case multinode-group --shell lava-group
+        - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
+        - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
+        - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
+        - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - lava-test-case multinode-network --shell lava-network broadcast eth0
+        - lava-test-case multinode-wait-all --shell lava-wait-all sending
+        - cat /tmp/lava_multi_node_cache.txt
+        - lava-test-case multinode-get-network --shell lava-network collect eth0
+        - cat /tmp/lava_multi_node_cache.txt
+        - rm -f ./check_ip
+        - wget -O check_ip http://people.linaro.org/~neil.williams/check_ip
+        - chmod a+x ./check_ip
+        - lava-test-case multinode-lava-network --shell ./check_ip
+        - lava-test-case multinode-network-query --shell lava-network query $(lava-self) ipv4
+        - lava-test-case direct-install --shell apt-get -y install curl
+        - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
+        - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz

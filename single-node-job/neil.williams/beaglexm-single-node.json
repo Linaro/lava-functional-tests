@@ -1,0 +1,38 @@
+{
+    "health_check": false,
+    "logging_level": "DEBUG",
+    "timeout": 900,
+    "job_name": "beagle-single-node",
+    "device_type": "beaglexm",
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://releases.linaro.org/12.02/ubuntu/beagleboard/beagle-ubuntu-desktop.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/single-node/singlenode02.yaml"
+                    }
+                ],
+                "timeout": 180
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

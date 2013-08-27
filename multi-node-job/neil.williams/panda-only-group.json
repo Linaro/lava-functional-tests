@@ -1,0 +1,50 @@
+{
+    "timeout": 900,
+    "job_name": "panda multinode API tests",
+    "logging_level": "INFO",
+    "device_group": [
+        {
+            "role": "criminal",
+            "count": 1,
+            "device_type": "panda",
+            "tags": [
+                "codehelp-crim"
+            ]
+        },
+        {
+            "role": "police",
+            "count": 1,
+            "device_type": "panda",
+            "tags": [
+                "codehelp-cop"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://releases.linaro.org/12.02/ubuntu/leb-panda/panda-ubuntu-desktop.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode02.yaml"
+                    }
+                ],
+                "timeout": 1800
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

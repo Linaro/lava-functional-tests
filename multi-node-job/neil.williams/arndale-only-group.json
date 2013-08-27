@@ -1,0 +1,65 @@
+{
+    "health_check": false,
+    "logging_level": "DEBUG",
+    "timeout": 900,
+    "job_name": "arndale-group-multinode",
+    "device_group": [
+        {
+            "role": "exynos",
+            "count": 1,
+            "device_type": "arndale",
+            "tags": [
+                "codehelp-block"
+            ]
+        },
+        {
+            "role": "chrome",
+            "count": 1,
+            "device_type": "arndale",
+            "tags": [
+                "codehelp-shadow"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "hwpack": "http://snapshots.linaro.org/kernel-hwpack/linux-preempt-rt-arndale/28/hwpack_linaro-arndale_20130723-1644_b28_armhf_supported.tar.gz",
+                "rootfs": "http://snapshots.linaro.org/ubuntu/images/nano-lava/442/linaro-raring-nano-lava-20130725-442.tar.gz"
+            },
+            "metadata": {
+                "distribution": "ubuntu",
+                "hwpack.type": "arndale",
+                "rootfs.type": "nano-lava"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode03.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode03.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

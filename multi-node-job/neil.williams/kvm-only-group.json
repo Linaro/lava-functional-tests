@@ -1,0 +1,49 @@
+{
+    "timeout": 900,
+    "job_name": "KVM multinode API tests",
+    "logging_level": "INFO",
+    "device_group": [
+        {
+            "role": "felix",
+            "count": 1,
+            "device_type": "kvm",
+            "tags": [
+                "codehelp-cat"
+            ]
+        },
+        {
+            "role": "rex",
+            "count": 1,
+            "device_type": "kvm",
+            "tags": [
+                "codehelp-dog"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://images.validation.linaro.org/kvm-debian-wheezy.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode03.yaml"
+                    }
+                ]
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}
