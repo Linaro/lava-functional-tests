@@ -1,6 +1,6 @@
 {
     "timeout": 1200,
-    "job_name": "combined panda arndale tests",
+    "job_name": "panda-arndale-group-multinode",
     "logging_level": "DEBUG",
     "device_group": [
         {

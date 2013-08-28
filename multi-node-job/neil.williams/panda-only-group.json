@@ -1,6 +1,6 @@
 {
     "timeout": 900,
-    "job_name": "panda multinode API tests",
+    "job_name": "panda-group-multinode",
     "logging_level": "INFO",
     "device_group": [
         {

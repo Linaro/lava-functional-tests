@@ -1,6 +1,6 @@
 {
     "timeout": 900,
-    "job_name": "panda black group test",
+    "job_name": "panda-black-group-multinode",
     "logging_level": "INFO",
     "device_group": [
         {
