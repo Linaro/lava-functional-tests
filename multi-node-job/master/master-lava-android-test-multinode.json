@@ -1,0 +1,55 @@
+{
+    "health_check": false,
+    "logging_level": "DEBUG",
+    "timeout": 900,
+    "job_name": "master-lava-android-test-multinode",
+    "device_group": [
+        {
+            "role": "exynos",
+            "count": 1,
+            "device_type": "arndale",
+            "tags": [
+                "codehelp-block"
+            ]
+        },
+        {
+            "role": "chrome",
+            "count": 1,
+            "device_type": "arndale",
+            "tags": [
+                "codehelp-shadow"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_android_image",
+            "parameters": {
+                "boot": "http://community.validation.linaro.org/images/arndale/boot.tar.bz2",
+                "data": "http://community.validation.linaro.org/images/arndale/userdata.tar.bz2",
+                "system": "http://community.validation.linaro.org/images/arndale/system.tar.bz2"
+            }
+        },
+        {
+            "command": "lava_android_test_install",
+            "parameters": {
+                "tests": [
+                    "busybox"
+                ]
+            }
+        },
+        {
+           "command": "lava_android_test_run",
+           "parameters": {
+                "test_name": "busybox"
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}

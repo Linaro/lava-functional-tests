@@ -1,6 +1,6 @@
 {
     "timeout": 900,
-    "job_name": "KVM multinode API tests",
+    "job_name": "kvm-group-multinode",
     "logging_level": "INFO",
     "device_group": [
         {
