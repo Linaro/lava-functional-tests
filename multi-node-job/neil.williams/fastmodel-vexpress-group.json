@@ -56,8 +56,8 @@
         {
             "command": "submit_results_on_host",
             "parameters": {
-                "stream": "/anonymous/codehelp/",
-                "server": "http://localhost/RPC2/"
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
             }
         }
     ]
