@@ -1,0 +1,64 @@
+{
+    "timeout": 900,
+    "job_name": "model-express-group-multinode",
+    "logging_level": "INFO",
+    "device_group": [
+        {
+            "role": "model",
+            "count": 1,
+            "device_type": "rtsm_foundation-armv8",
+            "tags": [
+                "codehelp-aarch64"
+            ]
+        },
+        {
+            "role": "express",
+            "count": 1,
+            "device_type": "rtsm_ve-a15x1-a7x1",
+            "tags": [
+                "codehelp-black"
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://community.validation.linaro.org/images/armv8-foundation/vexpress64-openembedded_minimal-armv8_20130820-436.img.gz",
+                "role": "model"
+            }
+        },
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "bootloader": "uefi",
+                "hwpack": "http://community.validation.linaro.org/images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
+                "rootfs": "http://community.validation.linaro.org/images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
+                "role": "express"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/multi-node/multinode02.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "/anonymous/codehelp/",
+                "server": "http://localhost/RPC2/"
+            }
+        }
+    ]
+}
