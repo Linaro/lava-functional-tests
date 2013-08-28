@@ -10,7 +10,7 @@
         "kernel": "http://community.validation.linaro.org/images/beagle/zImage",
         "ramdisk": "http://community.validation.linaro.org/images/beagle/uInitrd",
         "dtb": "http://community.validation.linaro.org/images/beagle/omap3-beagle-xm.dtb",
-        "rootfs": "file:///home/tyler/binaries/qemu/beagle-nano.img.gz"
+        "rootfs": "http://community.validation.linaro.org/images/qemu/beagle-nano.img.gz"
       }
     },
     {
