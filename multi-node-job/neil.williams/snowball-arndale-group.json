@@ -45,10 +45,6 @@
                     {
                         "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
                         "testdef": "lava-test-shell/multi-node/multinode02.yaml"
-                    },
-                    {
-                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
-                        "testdef": "lava-test-shell/multi-node/multinode03.yaml"
                     }
                 ],
                 "timeout": 900
