@@ -26,12 +26,21 @@
             "command": "deploy_linaro_image",
             "parameters": {
                 "hwpack": "http://releases.linaro.org/12.07/ubuntu/leb-snowball/hwpack_linaro-lt-snowball-x11-base_20120723-211_armhf_supported.tar.gz",
-                "rootfs": "http://releases.linaro.org/12.07/ubuntu/precise-images/nano/linaro-precise-nano-20120723-292.tar.gz"
+                "rootfs": "http://releases.linaro.org/12.07/ubuntu/precise-images/nano/linaro-precise-nano-20120723-292.tar.gz",
+                "role": "hail"
             },
             "metadata": {
                 "distribution": "ubuntu",
                 "hwpack.type": "snowball",
                 "rootfs.type": "nano-lava"
+            }
+        },
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "hwpack": "http://snapshots.linaro.org/kernel-hwpack/linux-preempt-rt-arndale/28/hwpack_linaro-arndale_20130723-1644_b28_armhf_supported.tar.gz",
+                "rootfs": "http://snapshots.linaro.org/ubuntu/images/nano-lava/442/linaro-raring-nano-lava-20130725-442.tar.gz",
+                "role": "blizzard"
             }
         },
         {
