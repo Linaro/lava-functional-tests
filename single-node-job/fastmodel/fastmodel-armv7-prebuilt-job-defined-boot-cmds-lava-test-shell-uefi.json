@@ -1,0 +1,63 @@
+{
+  "device_type": "rtsm_ve-a15x1-a7x1",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_linaro_image",
+      "parameters": {
+        "hwpack": "http://community.validation.linaro.org/images/armv7-fastmodel/armv7-fastmodel-prebuilt.img.gz",
+        "bootloadertype": "uefi"
+      }
+    },
+    {
+      "command": "boot_linaro_image",
+       "parameters": {
+          "interactive_boot_cmds": true,
+          "options": ["sendline a",
+                      "expect Choice:",
+                      "sendline 1",
+                      "expect Select the Boot Device:",
+                      "sendline 2",
+                      "expect File path of the EFI Application or the kernel:",
+                      "sendline uImage",
+                      "expect [a/g/l]",
+                      "sendline l",
+                      "expect Add an initrd: [y/n]",
+                      "sendline y",
+                      "expect File path of the initrd:",
+                      "sendline uInitrd",
+                      "expect Arguments to pass to the binary:",
+                      "sendline console=ttyAMA0,38400n8 root=/dev/mmcblk0p2 rootwait ro mem=1024M earlyprink",
+                      "expect File path of the local FDT:",
+                      "sendline rtsm\\rtsm_ve-ca15x1-ca7x1.dtb",
+                      "expect Description for this new Entry:",
+                      "sendline Test Image",
+                      "expect Choice:",
+                      "sendline 5",
+                      "expect Start:",
+                      "sendline 2"]
+      }
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/dmidecode.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 20000,
+  "job_name": "fastmodel-armv7-prebuilt-job-defined-boot-cmds-lava-test-shell-uefi"
+}
