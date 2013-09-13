@@ -1,0 +1,46 @@
+{
+  "device_type": "arndale",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "boot": "http://community.validation.linaro.org/images/arndale/boot.tar.bz2",
+            "data": "http://community.validation.linaro.org/images/arndale/userdata.tar.bz2",
+            "system": "http://community.validation.linaro.org/images/arndale/system.tar.bz2"
+        }
+    },
+    {
+      "command": "boot_linaro_android_image",
+       "parameters": {
+          "wait_for_home_screen_activity": "Displayed com.android.launcher/com.android.launcher2.Launcher:",
+          "interactive_boot_cmds": true,
+          "options": ["mmc init",
+                      "mmc part 0",
+                      "setenv bootcmd 'fatload mmc 0:5 0x40007000 uImage; fatload mmc 0:5 0x41000000 uInitrd; fatload mmc 0:5 0x41f00000 board.dtb; bootm 0x40007000 0x41000000 0x41f00000'",
+                      "setenv bootargs 'console=tty0 console=ttySAC2,115200n8 androidboot.hardware=exynos5250-arndale rootwait ro rootdelay=3 init=/init androidboot.console=ttySAC2 console=ttySAC2 test'",
+                      "boot"]
+      }
+    },
+    {
+        "command": "lava_test_shell",
+        "parameters": {
+            "testdef_repos": [
+                {
+                    "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                    "testdef": "android/busybox.yaml"
+                }
+            ]
+        }
+    }, 
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ],
+  "timeout": 18000,
+  "job_name": "master-job-defined-boot-cmds-job-defined-wait-for-home-screen-lava-test-shell-android"
+}

@@ -14,7 +14,10 @@
       }
     },
     {
-      "command": "boot_linaro_android_image"
+        "command": "boot_linaro_android_image",
+        "parameters": {
+            "wait_for_home_screen_activity": "Displayed com.google.android.setupwizard/.WelcomeActivity:"
+        }
     },
     {
         "command": "lava_android_test_install",

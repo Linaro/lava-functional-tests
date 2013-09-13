@@ -1,14 +1,13 @@
 {
-  "timeout": 18000,
-  "job_name": "kvm-boot",
-  "device_type": "kvm",
+  "device_type": "rtsm_ve-a15x1-a7x1",
   "logging_level": "DEBUG",
   "actions": [
     {
       "command": "deploy_linaro_image",
       "parameters": {
-        "image": "http://community.validation.linaro.org/images/kvm/kvm-image.img.gz"
-        }
+        "image": "http://community.validation.linaro.org/images/armv7-fastmodel/armv7-fastmodel-prebuilt.img.gz",
+        "bootloadertype": "uefi"
+      }
     },
     {
       "command": "boot_linaro_image"
@@ -20,5 +19,7 @@
         "server": "LAVA_SERVER"
       }
     }
-  ]
+  ],
+  "timeout": 20000,
+  "job_name": "fastmodel-armv7-prebuilt-device-defined-boot-cmds-uefi"
 }
