@@ -37,6 +37,7 @@ run:
         - chmod a+x ./check_ip
         - lava-test-case multinode-lava-network --shell ./check_ip
         - lava-test-case multinode-network-query --shell lava-network query $(lava-self) ipv4
+        - lava-test-case direct-update --shell apt-get update
         - lava-test-case direct-install --shell apt-get -y install curl
         - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
