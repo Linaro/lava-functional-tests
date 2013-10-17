@@ -5,7 +5,7 @@
     {
       "command": "deploy_linaro_image",
       "parameters": {
-        "image": "http://community.validation.linaro.org/images/armv7-fastmodel/armv7-fastmodel-prebuilt.img.gz"
+        "image": "http://community.validation.linaro.org/images/armv7-fastmodel/armv7-fastmodel-prebuilt-10-16-2013.img.gz"
       }
     },
     {
