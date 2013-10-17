@@ -29,14 +29,20 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
         - lava-test-case multinode-network --shell lava-network broadcast eth0
         - lava-test-case multinode-wait-all --shell lava-wait-all sending
-        - cat /tmp/lava_multi_node_cache.txt
         - lava-test-case multinode-get-network --shell lava-network collect eth0
-        - cat /tmp/lava_multi_node_cache.txt
-        - rm -f ./check_ip
-        - wget -O check_ip http://people.linaro.org/~neil.williams/check_ip
-        - chmod a+x ./check_ip
-        - lava-test-case multinode-lava-network --shell ./check_ip
-        - lava-test-case multinode-network-query --shell lava-network query $(lava-self) ipv4
+        - lava-test-case multinode-lava-network-ipv4 --shell ./multinode/check_ip.sh
+        - lava-test-case multinode-lava-network2-ipv4 --shell ./multinode/check_ip.pl
+        - lava-test-case multinode-broadcast-ipv4 --shell lava-network query $(lava-self) ipv4
+        - lava-test-case multinode-broadcast-ipv6 --shell lava-network query $(lava-self) ipv6
+        - lava-test-case multinode-broadcast-netmask --shell lava-network query $(lava-self) netmask
+        - lava-test-case multinode-broadcast-gateway --shell lava-network query $(lava-self) default-gateway
+        - lava-test-case multinode-broadcast-hostname --shell lava-network query $(lava-self) hostname
+        - lava-test-case multinode-broadcast-fqdn --shell lava-network query $(lava-self) hostname-full
+        - lava-test-case multinode-broadcast-dns1 --shell lava-network query $(lava-self) dns_1
+        - lava-test-case multinode-broadcast-dns2 --shell lava-network query $(lava-self) dns_2
+        - lava-test-case multinode-broadcast-dns3 --shell lava-network query $(lava-self) dns_3
+        - lava-test-case direct-update --shell apt-get update
         - lava-test-case direct-install --shell apt-get -y install curl
         - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
+        - lava-test-case remove-tgz --shell rm netperf-2.6.0.tar.gz
