@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://linaro-gateway/beaglebone/beaglebone_20130625-379.img.gz"
+                "image": "http://community.validation.linaro.org/images/bbb/beaglebone_20130625-379.img.gz"
             }
         },
         {
