@@ -57,7 +57,7 @@
                         "testdef": "ubuntu/smoke-tests-basic.yaml"
                     },
                     {
-                        "git-repo": "http://staging.git.linaro.org/git-ro/lava-team/lava-functional-tests.git",
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
                         "testdef": "lava-test-shell/multi-node/multinode03.yaml"
                     }
                 ],
