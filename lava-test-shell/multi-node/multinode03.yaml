@@ -51,6 +51,11 @@ run:
         - lava-test-case multinode-broadcast-dns1 --shell lava-network query $(lava-self) dns_1
         - lava-test-case multinode-broadcast-dns2 --shell lava-network query $(lava-self) dns_2
         - lava-test-case multinode-broadcast-dns3 --shell lava-network query $(lava-self) dns_3
+        - cat /tmp/lava_multi_node_network_cache.txt
+        - lava-test-case network-cache --shell lava-network hosts /tmp/testfile
+        - cat /tmp/testfile
+        - lava-test-case network-alias-cache --shell lava-network alias-hosts /tmp/testfile-alias
+        - cat /tmp/testfile-alias
         - lava-test-case ntpdate-check --shell ntpdate-debian
         - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
