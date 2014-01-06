@@ -30,8 +30,8 @@ run:
         - lava-test-case multinode-network --shell lava-network broadcast eth0
         - lava-test-case multinode-wait-all --shell lava-wait-all sending
         - lava-test-case multinode-get-network --shell lava-network collect eth0
-        - lava-test-case multinode-lava-network-ipv4 --shell ./multinode/check_ip.sh
-        - lava-test-case multinode-lava-network2-ipv4 --shell ./multinode/check_ip.pl
+        - lava-test-case multinode-lava-network-ipv4 --shell ./lava-test-shell/multi-node/check_ip.sh
+        - lava-test-case multinode-lava-network2-ipv4 --shell ./lava-test-shell/multi-node/check_ip.pl
         - lava-test-case multinode-broadcast-ipv4 --shell lava-network query $(lava-self) ipv4
         - lava-test-case multinode-broadcast-ipv6 --shell lava-network query $(lava-self) ipv6
         - lava-test-case multinode-broadcast-netmask --shell lava-network query $(lava-self) netmask
