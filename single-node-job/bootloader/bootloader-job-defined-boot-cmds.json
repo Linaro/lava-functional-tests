@@ -3,12 +3,12 @@
   "logging_level": "DEBUG",
   "actions": [
     {
-      "command": "deploy_linaro_kernel",
-      "parameters": {
-        "kernel": "http://community.validation.linaro.org/images/arndale/uImage",
-        "ramdisk": "http://community.validation.linaro.org/images/arndale/uInitrd",
-        "dtb": "http://community.validation.linaro.org/images/arndale/exynos5250-arndale.dtb"
-      }
+        "command": "deploy_linaro_kernel",
+        "parameters": {
+            "dtb": "http://community.validation.linaro.org/images/arndale/linaro/exynos5250-arndale.dtb",
+            "kernel": "http://community.validation.linaro.org/images/arndale/linaro/uImage",
+            "ramdisk": "http://community.validation.linaro.org/images/common/linaro-image-minimal-initramfs-genericarmv7a.cpio.gz.u-boot"
+        }
     },
     {
       "command": "boot_linaro_image",

@@ -3,12 +3,12 @@
   "logging_level": "DEBUG",
   "actions": [
     {
-      "command": "deploy_linaro_kernel",
-      "parameters": {
-        "kernel": "http://community.validation.linaro.org/images/panda/uImage",
-        "ramdisk": "http://community.validation.linaro.org/images/panda/uInitrd",
-        "dtb": "http://community.validation.linaro.org/images/panda/omap4-panda-es.dtb"
-      }
+        "command": "deploy_linaro_kernel",
+        "parameters": {
+            "dtb": "http://community.validation.linaro.org/images/panda/omap4-panda-es.dtb",
+            "kernel": "http://community.validation.linaro.org/images/panda/uImage",
+            "ramdisk": "http://community.validation.linaro.org/images/common/linaro-image-minimal-initramfs-genericarmv7a.cpio.gz.u-boot"
+        }
     },
     {
       "command": "boot_linaro_image"

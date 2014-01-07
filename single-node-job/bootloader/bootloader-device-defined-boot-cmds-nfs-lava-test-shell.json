@@ -1,0 +1,53 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "dtb": "http://community.validation.linaro.org/images/arndale/linaro/exynos5250-arndale.dtb",
+                "kernel": "http://community.validation.linaro.org/images/arndale/linaro/uImage",
+                "nfsrootfs": "http://community.validation.linaro.org/images/common/linaro-image-lng-genericarmv7a-20140107-210.rootfs.tar.gz"
+            }
+        },
+        {
+            "command": "boot_linaro_image",
+            "parameters": {
+                "boot_cmds": [
+                    "setenv autoload no",
+                    "setenv kernel_addr_r '0x40007000'",
+                    "setenv fdt_addr_r '0x41f00000'",
+                    "setenv loadkernel 'tftp ${kernel_addr_r} ${lava_kernel}'",
+                    "setenv fdt_high '0xffffffff'",
+                    "setenv loadfdt 'tftp ${fdt_addr_r} ${lava_dtb}'",
+                    "setenv nfsargs 'setenv bootargs console=tty0 console=ttySAC2,115200n8 drm_kms_helper.edid_firmware=edid-1920x1080.fw root=/dev/nfs rw nfsroot=${lava_server_ip}:${lava_nfsrootfs} ip=:::::eth0:dhcp'",
+                    "setenv bootcmd 'usb start; dhcp; setenv serverip ${lava_server_ip}; run loadkernel; run loadfdt; run nfsargs; bootm ${kernel_addr_r} - ${fdt_addr_r}'",
+                    "boot"
+                ]
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/qa/test-definitions.git",
+                        "testdef": "openembedded/kernel-version.yaml"
+                    }
+                ],
+                "timeout": 18000
+            }
+        },
+        {
+          "command": "submit_results",
+          "parameters": {
+            "stream": "BUNDLE_STREAM",
+            "server": "LAVA_SERVER"
+          }
+        }
+    ],
+    "device_type": "arndale",
+    "health_check": false,
+    "job_name": "bootloader-device-defined-boot-cmds-nfs-lava-test-shell",
+    "timeout": 18000
+}
+
+
