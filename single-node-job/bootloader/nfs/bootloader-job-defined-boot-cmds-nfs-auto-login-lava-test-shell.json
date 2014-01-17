@@ -1,0 +1,56 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "dtb": "http://community.validation.linaro.org/images/bbb/nfs/devicetree-zImage-am335x-boneblack.dtb",
+                "kernel": "http://community.validation.linaro.org/images/bbb/nfs/zImage-3.12.4-gdfea149",
+                "login_prompt": "login:",
+                "nfsrootfs": "http://community.validation.linaro.org/images/bbb/nfs/rootfs.tar.gz",
+                "username": "root"
+            }
+        },
+        {
+            "command": "boot_linaro_image",
+            "parameters": {
+                "boot_cmds": [
+                    "setenv autoload no",
+                    "setenv pxefile_addr_r '0x50000000'",
+                    "setenv kernel_addr_r '0x80200000'",
+                    "setenv fdt_addr_r '0x815f0000'",
+                    "setenv fdt_high '0xffffffff'",
+                    "setenv loadkernel 'tftp ${kernel_addr_r} ${lava_kernel}'",
+                    "setenv loadfdt 'tftp ${fdt_addr_r} ${lava_dtb}'",
+                    "setenv nfsargs 'setenv bootargs console=ttyO0,115200n8 root=/dev/nfs rw nfsroot=${lava_server_ip}:${lava_nfsrootfs} earlyprintk ip=:::::eth0:dhcp'",
+                    "setenv bootcmd 'dhcp; setenv serverip ${lava_server_ip}; run loadkernel; run loadfdt; run nfsargs; bootz ${kernel_addr_r} - ${fdt_addr_r}'",
+                    "boot"
+                ],
+                "test_image_prompt": "root@am335x-evm:~#"
+            }
+        },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "openembedded/kernel-version.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+    ],
+    "device_type": "beaglebone-black",
+    "health_check": false,
+    "job_name": "bootloader-job-defined-boot-cmds-nfs-auto-login-lava-test-shell",
+    "logging_level": "DEBUG",
+    "timeout": 18000
+}
