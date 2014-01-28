@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://linaro-gateway/highbank/highbank-quantal_developer_20130425-301.img.gz"
+                "image": "http://releases.linaro.org/13.12/ubuntu/boards/highbank/highbank-saucy_server_20131216-558.img.gz"
             }
         },
         {
