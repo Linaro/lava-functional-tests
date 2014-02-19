@@ -17,7 +17,7 @@
                 "testdef_repos": [
                     {
                         "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
-                        "testdef": "params/params.yaml",
+                        "testdef": "lava-test-shell/params/params.yaml",
                         "parameters": {
                             "VARIABLE_NAME_1": "eth2",
                             "VARIABLE_NAME_2": "wlan0"
