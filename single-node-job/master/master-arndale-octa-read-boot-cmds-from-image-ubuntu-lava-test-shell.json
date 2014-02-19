@@ -1,0 +1,31 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://community.validation.linaro.org/images/arndale-octa/arndale-octa-saucy_server_20140130-599.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/dmidecode.yaml"
+                    }
+                ]
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "arndale-octa",
+    "job_name": "master-arndale-octa-read-boot-cmds-from-image-ubuntu-lava-test-shell,
+    "timeout": 18000
+}
