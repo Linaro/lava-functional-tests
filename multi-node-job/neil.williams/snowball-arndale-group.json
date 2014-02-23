@@ -7,18 +7,12 @@
         {
             "role": "hail",
             "count": 1,
-            "device_type": "snowball_sd",
-            "tags": [
-                "codehelp-wet"
-            ]
+            "device_type": "snowball_sd"
         },
         {
             "role": "blizzard",
             "count": 1,
-            "device_type": "arndale",
-            "tags": [
-                "codehelp-white"
-            ]
+            "device_type": "arndale"
         }
     ],
     "actions": [

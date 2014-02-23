@@ -6,18 +6,12 @@
         {
             "role": "police",
             "count": 2,
-            "device_type": "panda",
-            "tags": [
-                "codehelp-cop"
-            ]
+            "device_type": "panda"
         },
         {
             "role": "public",
             "count": 1,
-            "device_type": "arndale",
-            "tags": [
-                "codehelp-public"
-            ]
+            "device_type": "arndale"
         }
     ],
     "actions": [

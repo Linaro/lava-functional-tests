@@ -6,18 +6,12 @@
         {
             "role": "black",
             "count": 2,
-            "device_type": "beaglebone-black",
-            "tags": [
-                "codehelp-block"
-            ]
+            "device_type": "beaglebone-black"
         },
         {
             "role": "public",
             "count": 2,
-            "device_type": "arndale",
-            "tags": [
-                "codehelp-public"
-            ]
+            "device_type": "arndale"
         }
     ],
     "actions": [

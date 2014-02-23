@@ -6,18 +6,12 @@
         {
             "role": "model",
             "count": 1,
-            "device_type": "rtsm_foundation-armv8",
-            "tags": [
-                "codehelp-aarch64"
-            ]
+            "device_type": "rtsm_foundation-armv8"
         },
         {
             "role": "express",
             "count": 1,
-            "device_type": "rtsm_ve-a15x1-a7x1",
-            "tags": [
-                "codehelp-black"
-            ]
+            "device_type": "rtsm_ve-a15x1-a7x1"
         }
     ],
     "actions": [
