@@ -26,6 +26,6 @@
         }
     ],
     "device_type": "arndale-octa",
-    "job_name": "master-arndale-octa-read-boot-cmds-from-image-ubuntu-lava-test-shell,
+    "job_name": "master-arndale-octa-read-boot-cmds-from-image-ubuntu-lava-test-shell",
     "timeout": 18000
 }
