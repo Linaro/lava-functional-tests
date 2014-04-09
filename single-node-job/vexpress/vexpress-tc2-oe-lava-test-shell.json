@@ -1,0 +1,34 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "hwpack": "http://releases.linaro.org/14.03/openembedded/vexpress-lsk/hwpack_linaro-lsk-vexpress_20140323-616_armhf_supported.tar.gz",
+                "rootfs": "http://releases.linaro.org/14.03/openembedded/vexpress-lsk/lsk-vexpress-openembedded_alip-armv7a-gcc-4.8_20140323-616.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/bootchart.yaml"
+                    }
+                ],
+                "timeout": 800
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "vexpress-tc2",
+    "job_name": "vexpress-tc2-oe-lava-test-shell",
+    "timeout": 172800
+}
+

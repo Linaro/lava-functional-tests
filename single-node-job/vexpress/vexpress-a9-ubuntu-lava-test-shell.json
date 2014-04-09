@@ -1,0 +1,33 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "hwpack": "http://releases.linaro.org/14.03/openembedded/vexpress-lsk/hwpack_linaro-lsk-vexpress_20140323-616_armhf_supported.tar.gz",
+                "rootfs": "http://releases.linaro.org/14.03/ubuntu/saucy-images/nano/linaro-saucy-nano-20140323-649.tar.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/device-tree.yaml"
+                    }
+                ],
+                "timeout": 800
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "vexpress-a9",
+    "job_name": "vexpress-a9-ubuntu-lava-test-shell",
+    "timeout": 172800
+}
