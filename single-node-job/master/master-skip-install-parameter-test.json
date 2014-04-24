@@ -1,0 +1,97 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://images.validation.linaro.org/kvm-debian-wheezy.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/params/skip_install.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "skip_install": "all",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/lava-team/lava-functional-tests.git",
+                        "parameters": {
+                            "SKIPNAME": "all"
+                        },
+                        "testdef": "lava-test-shell/params/skip_install.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "skip_install": "deps",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/lava-team/lava-functional-tests.git",
+                        "parameters": {
+                            "SKIPNAME": "deps"
+                        },
+                        "testdef": "lava-test-shell/params/skip_install.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "skip_install": "repos",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/lava-team/lava-functional-tests.git",
+                        "parameters": {
+                            "SKIPNAME": "repos"
+                        },
+                        "testdef": "lava-test-shell/params/skip_install.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "skip_install": "steps",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/lava-team/lava-functional-tests.git",
+                        "parameters": {
+                            "SKIPNAME": "steps"
+                        },
+                        "testdef": "lava-test-shell/params/skip_install.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "kvm",
+    "job_name": "skip_install-test",
+    "logging_level": "DEBUG",
+    "timeout": 900
+}

@@ -1,0 +1,26 @@
+metadata:
+    format: "Lava-Test Test Definition 1.0"
+    name: skip_install-test
+    description: "Test skipping installation steps defined in YAML"
+    version: 1.0
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+
+install:
+    deps:
+        - wget
+    git-repos:
+        - git://git.linaro.org/tools/pm-qa.git
+    steps:
+        - 'wget http://people.redhat.com/mingo/cfs-scheduler/tools/hackbench.c'
+
+params:
+    SKIPNAME: "none"
+
+run:
+    steps:
+        - lava-test-case skip_install_$SKIPNAME-test --result pass
