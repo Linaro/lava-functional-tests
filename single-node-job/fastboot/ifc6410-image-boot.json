@@ -1,0 +1,25 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_android_image",
+            "parameters": {
+                "boot": "http://community.validation.linaro.org/images/ifc6410/linaro-boot.img",
+                "data": "http://community.validation.linaro.org/images/ifc6410/linaro-saucy-developer-ifc6410.img.gz",
+                "target_type": "ubuntu"
+            }
+        },
+        {
+            "command": "boot_linaro_image"
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ],
+    "device_type": "ifc6410",
+    "job_name": "ifc6410-image-boot",
+    "timeout": 18000
+}
