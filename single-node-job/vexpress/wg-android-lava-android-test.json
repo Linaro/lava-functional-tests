@@ -32,7 +32,7 @@
     {
       "command": "submit_results",
       "parameters": {
-        "stream": "BUNDLE_STREAM",
+        "stream": "/private/team/wg/wg-private/",
         "server": "LAVA_SERVER"
       }
     }
