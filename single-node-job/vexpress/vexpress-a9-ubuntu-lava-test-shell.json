@@ -3,8 +3,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "hwpack": "http://releases.linaro.org/14.03/openembedded/vexpress-lsk/hwpack_linaro-lsk-vexpress_20140323-616_armhf_supported.tar.gz",
-                "rootfs": "http://releases.linaro.org/14.03/ubuntu/saucy-images/nano/linaro-saucy-nano-20140323-649.tar.gz"
+                "image": "http://community.validation.linaro.org/images/vexpress/lsk-vexpress-trusty_nano_20140525-654.img.gz"
             }
         },
         {
