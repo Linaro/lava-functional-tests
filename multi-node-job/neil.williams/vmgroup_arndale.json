@@ -1,0 +1,68 @@
+{
+    "timeout": 10000,
+    "job_name": "vm-groups arndale functional test",
+    "logging_level": "DEBUG",
+    "vm_group": {
+        "host": {
+            "device_type": "arndale",
+            "role": "host"
+        },
+        "vms": [
+            {
+                "device_type": "kvm-arm",
+                "role": "vm"
+            }
+        ]
+    },
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://people.linaro.org/~neil.williams/vm_groups/arndale-ubuntu-vm-groups.img.gz",
+                "role": "host"
+            }
+        },
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "kernel": "http://people.linaro.org/~neil.williams/vm_groups/zImage",
+                "rootfs": "http://people.linaro.org/~neil.williams/vm_groups/kvm.qcow2.gz",
+                "dtb": "http://people.linaro.org/~neil.williams/vm_groups/vexpress-v2p-ca15-tc1.dtb",
+                "role": "vm"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/vmgroups/host.yaml"
+                    }
+                ],
+                "role": "host",
+                "timeout": 1800
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/single-node/singlenode02.yaml"
+                    }
+                ],
+                "role": "vm",
+                "timeout": 9600
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}
