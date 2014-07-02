@@ -1,0 +1,37 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: singlenode-advanced
+    description: "Advanced (level 3): single node test commands for VM group host"
+    version: 1.0
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+        - arndale
+
+install:
+    deps:
+        - realpath
+        - ntpdate
+        - lsb-release
+        - usbutils
+
+run:
+    steps:
+        - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
+        - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
+        - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
+        - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - lava-test-case ping-test --shell ping -W1 -c1 validation.linaro.org
+        - lava-test-case realpath-check --shell realpath ./multinode/check_ip.sh
+        - lava-test-case ntpdate-check --shell ntpdate-debian
+        - lava-test-case hyp-mode --shell ./vmgroups/init.sh
+
+parse:
+    pattern: "(?P<test_case_id>.*-*):\\s+(?P<result>(pass|fail))"
