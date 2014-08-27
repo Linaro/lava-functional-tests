@@ -3,8 +3,8 @@
         {
             "command": "deploy_linaro_kernel",
             "parameters": {
-                "kernel": "http://community.validation.linaro.org/images/ifc6410/zImage_ifc6410",
-                "rootfs": "http://community.validation.linaro.org/images/ifc6410/linaro-saucy-developer-ifc6410.img.gz",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/ifc6410/zImage_ifc6410",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/ifc6410/linaro-saucy-developer-ifc6410.img.gz",
                 "target_type": "ubuntu"
             }
         },

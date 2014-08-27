@@ -8,9 +8,9 @@
     {
       "command": "deploy_linaro_android_image",
       "parameters": {
-        "data": "http://community.validation.linaro.org/images/galaxy-nexus/userdata.img",
-        "system": "http://community.validation.linaro.org/images/galaxy-nexus/system.img",
-        "boot": "http://community.validation.linaro.org/images/galaxy-nexus/boot.img"
+        "data": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/userdata.img",
+        "system": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/system.img",
+        "boot": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/boot.img"
       }
     },
     {
