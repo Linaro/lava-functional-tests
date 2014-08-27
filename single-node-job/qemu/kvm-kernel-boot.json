@@ -7,9 +7,9 @@
     {
       "command": "deploy_linaro_kernel",
       "parameters": {
-        "kernel": "http://community.validation.linaro.org/images/kvm/vmlinuz-3.5.0-17-generic",
-        "ramdisk": "http://community.validation.linaro.org/images/kvm/initrd.img-3.5.0-17-generic",
-        "rootfs": "http://community.validation.linaro.org/images/kvm/kvm-image.img.gz"
+        "kernel": "http://images.validation.linaro.org/functional-test-images/kvm/vmlinuz-3.14-1-amd64",
+        "ramdisk": "http://images.validation.linaro.org/functional-test-images/kvm/initrd.img-3.14-1-amd64",
+        "rootfs": "http://images.validation.linaro.org/functional-test-images/kvm/kvm-image.img.gz"
       }
     },
     {

@@ -1,7 +1,7 @@
 {
   "timeout": 18000,
-  "job_name": "qemu-arm-kernel-boot",
-  "device_type": "qemu-arm",
+  "job_name": "qemu-kernel-boot-lava-test-shell",
+  "device_type": "qemu",
   "logging_level": "DEBUG",
   "actions": [
     {
@@ -18,6 +18,18 @@
         "parameters": {
             "test_image_prompt": "root@qemu-system-arm:~#"
         }
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/dmidecode.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
     },
     {
       "command": "submit_results",
