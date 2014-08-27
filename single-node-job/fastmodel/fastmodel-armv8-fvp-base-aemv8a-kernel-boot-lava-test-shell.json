@@ -3,12 +3,12 @@
         {
             "command": "deploy_linaro_kernel",
             "parameters": {
-                "bl1": "http://community.validation.linaro.org/images/armv8/fvp_bl1.bin",
-                "bootloader": "http://community.validation.linaro.org/images/armv8/fvp_fip.bin",
+                "bl1": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/fvp_bl1.bin",
+                "bootloader": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/fvp_fip.bin",
                 "bootloadertype": "uefi",
-                "dtb": "http://community.validation.linaro.org/images/armv8/fvp-base-gicv2-psci.dtb",
-                "kernel": "http://community.validation.linaro.org/images/armv8/Image",
-                "ramdisk": "http://community.validation.linaro.org/images/armv8/linaro-image-minimal-initramfs-genericarmv8-20140522-680.rootfs.cpio.gz"
+                "dtb": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/fvp-base-gicv2-psci.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/Image",
+                "ramdisk": "http://images.validation.linaro.org/functional-test-images/common/linaro-image-minimal-initramfs-genericarmv8-20140522-680.rootfs.cpio.gz"
             }
         },
         {

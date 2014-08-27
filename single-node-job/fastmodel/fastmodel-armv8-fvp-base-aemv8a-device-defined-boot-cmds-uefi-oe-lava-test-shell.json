@@ -4,8 +4,8 @@
             "command": "deploy_linaro_image",
             "parameters": {
                 "bootloadertype": "uefi",
-                "hwpack": "http://releases.linaro.org/13.12/openembedded/aarch64/hwpack_linaro-vexpress64-rtsm_20131215-557_arm64_supported.tar.gz",
-                "rootfs": "http://releases.linaro.org/13.12/openembedded/aarch64/linaro-image-lamp-genericarmv8-20131215-598.rootfs.tar.gz"
+                "hwpack": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/hwpack_linaro-vexpress64-rtsm_20131215-557_arm64_supported.tar.gz",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/linaro-image-lamp-genericarmv8-20131215-598.rootfs.tar.gz"
             }
         },
         {

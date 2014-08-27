@@ -5,8 +5,8 @@
     {
       "command": "deploy_linaro_image",
       "parameters": {
-        "hwpack": "http://community.validation.linaro.org/images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
-        "rootfs": "http://community.validation.linaro.org/images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
+        "hwpack": "http://images.validation.linaro.org/functional-test-images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
+        "rootfs": "http://images.validation.linaro.org/functional-test-images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
         "bootloadertype": "uefi"
       }
     },
