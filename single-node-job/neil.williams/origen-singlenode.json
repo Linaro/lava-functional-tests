@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://releases.linaro.org/13.01/ubuntu/origen/origen-quantal_developer_20130130-64.img.gz"
+                "image": "http://images.validation.linaro.org/functional-test-images/origen/origen-quantal_developer_20130130-64.img.gz"
             }
         },
         {

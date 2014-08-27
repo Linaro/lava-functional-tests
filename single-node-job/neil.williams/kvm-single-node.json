@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://community.validation.linaro.org/images/kvm/kvm-image.img.gz"
+                "image": "http://images.validation.linaro.org/functional-test-images/kvm/kvm-image.img.gz"
             }
         },
         {

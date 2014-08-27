@@ -8,7 +8,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://releases.linaro.org/12.02/ubuntu/beagleboard/beagle-ubuntu-desktop.img.gz"
+                "image": "http://images.validation.linaro.org/functional-test-images/beagle-xm/beagle-ubuntu-desktop.img.gz"
             }
         },
         {

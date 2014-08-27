@@ -8,8 +8,8 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "hwpack": "http://community.validation.linaro.org/images/arndale/hwpack_linaro-arndale_20130827-444_armhf_supported.tar.gz",
-                "rootfs": "http://community.validation.linaro.org/images/arndale/linaro-raring-nano-lava-20130827-475.tar.gz"
+                "hwpack": "http://images.validation.linaro.org/functional-test-images/arndale/hwpack_linaro-arndale_20140728-10_armhf_supported.tar.gz",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/common/linaro-trusty-nano-lava-20140821-681.tar.gz"
             },
             "metadata": {
                 "distribution": "ubuntu",
