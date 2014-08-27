@@ -1,7 +1,7 @@
 {
   "timeout": 18000,
-  "job_name": "qemu-kernel-boot-lava-test-shell",
-  "device_type": "qemu",
+  "job_name": "qemu-arm-kernel-boot-lava-test-shell",
+  "device_type": "qemu-arm",
   "logging_level": "DEBUG",
   "actions": [
     {
