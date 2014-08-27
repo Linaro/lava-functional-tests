@@ -5,7 +5,7 @@
     {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "https://releases.linaro.org/14.05/openembedded/aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140530-656.img.gz",
+                "image": "http://images.validation.linaro.org/functional-test-images/wg/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140530-656.img.gz",
                 "bootloadertype": "uefi"
             }
     },
