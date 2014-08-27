@@ -5,8 +5,8 @@
     {
         "command": "deploy_linaro_kernel",
         "parameters": {
-            "dtb": "http://community.validation.linaro.org/images/bbb/am335x-bone.dtb",
-            "kernel": "http://community.validation.linaro.org/images/bbb/zImage",
+            "dtb": "http://images.validation.linaro.org/functional-test-images/bbb/am335x-bone.dtb",
+            "kernel": "http://images.validation.linaro.org/functional-test-images/bbb/zImage",
             "ramdisk": "http://community.validation.linaro.org/images/common/linaro-image-minimal-initramfs-genericarmv7a.cpio.gz.u-boot"
         }
     },

@@ -3,10 +3,13 @@
         {
             "command": "deploy_linaro_kernel",
             "parameters": {
-                "dtb": "http://community.validation.linaro.org/images/bbb/nfs/devicetree-zImage-am335x-boneblack.dtb",
-                "kernel": "http://community.validation.linaro.org/images/bbb/nfs/zImage-3.12.4-gdfea149",
-                "login_prompt": "login:",
+                "dtb": "http://images.validation.linaro.org/functional-test-images/bbb/am335x-bone.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/bbb/zImage",
                 "nfsrootfs": "http://community.validation.linaro.org/images/bbb/nfs/rootfs.tar.gz",
+                "target_type": "ubuntu",
+                "password": "linaro",
+                "password_prompt": "Password",
+                "login_prompt": "login:",
                 "username": "root"
             }
         },
@@ -34,7 +37,7 @@
         "testdef_repos": [
           {
             "git-repo": "git://git.linaro.org/qa/test-definitions.git",
-            "testdef": "openembedded/kernel-version.yaml"
+            "testdef": "ubuntu/dmidecode.yaml"
           }
         ],
         "timeout": 9600

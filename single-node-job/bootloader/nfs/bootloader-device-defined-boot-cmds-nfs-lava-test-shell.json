@@ -3,9 +3,9 @@
         {
             "command": "deploy_linaro_kernel",
             "parameters": {
-                "dtb": "http://community.validation.linaro.org/images/arndale/linaro/exynos5250-arndale.dtb",
-                "kernel": "http://community.validation.linaro.org/images/arndale/linaro/uImage",
-                "nfsrootfs": "http://community.validation.linaro.org/images/common/linaro-image-lng-genericarmv7a-20140107-210.rootfs.tar.gz"
+                "dtb": "http://images.validation.linaro.org/functional-test-images/arndale/exynos5250-arndale.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/arndale/uImage",
+                "nfsrootfs": "http://images.validation.linaro.org/functional-test-images/common/linaro-trusty-server-20140522-661.tar.gz"
             }
         },
         {
