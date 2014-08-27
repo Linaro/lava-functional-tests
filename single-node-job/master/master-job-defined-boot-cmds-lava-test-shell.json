@@ -4,8 +4,8 @@
     {
       "command": "deploy_linaro_image",
       "parameters": {
-        "hwpack": "http://community.validation.linaro.org/images/bbb/hwpack_linaro-beaglebone_20130806-422_armhf_supported.tar.gz",
-        "rootfs": "http://community.validation.linaro.org/images/bbb/linaro-raring-nano-lava-20130806-454.tar.gz"
+        "hwpack": "http://images.validation.linaro.org/functional-test-images/bbb/hwpack_linaro-beaglebone_20140827-507_armhf_supported.tar.gz",
+        "rootfs": "http://images.validation.linaro.org/functional-test-images/common/linaro-trusty-nano-lava-20140821-681.tar.gz"
       }
     },
     {

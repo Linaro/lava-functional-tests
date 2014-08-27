@@ -3,7 +3,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://community.validation.linaro.org/images/arndale-octa/arndale-octa-saucy_server_20140130-599.img.gz"
+                "image": "http://images.validation.linaro.org/functional-test-images/arndale-octa/arndale-octa-saucy_server_20140130-599.img.gz"
             }
         },
         {
