@@ -5,7 +5,7 @@
             "parameters": {
                 "dtb": "http://images.validation.linaro.org/functional-test-images/bbb/am335x-bone.dtb",
                 "kernel": "http://images.validation.linaro.org/functional-test-images/bbb/zImage",
-                "nfsrootfs": "http://community.validation.linaro.org/images/bbb/nfs/rootfs.tar.gz",
+                "nfsrootfs": "http://images.validation.linaro.org/functional-test-images/bbb/sid-beaglebone-black.tar.xz",
                 "target_type": "ubuntu",
                 "password": "linaro",
                 "password_prompt": "Password",

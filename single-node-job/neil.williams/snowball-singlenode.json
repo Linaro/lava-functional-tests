@@ -9,7 +9,7 @@
             "command": "deploy_linaro_image",
             "parameters": {
                 "hwpack": "http://images.validation.linaro.org/functional-test-images/snowball/hwpack_linaro-lt-snowball-x11-base_20120723-211_armhf_supported.tar.gz",
-                "rootfs": "http://images.validation.linaro.org/functional-test-images/snowball/precise-images/nano/linaro-precise-nano-20120723-292.tar.gz"
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/snowball/linaro-precise-nano-20120723-292.tar.gz"
             },
             "metadata": {
                 "distribution": "ubuntu",

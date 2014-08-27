@@ -18,16 +18,16 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://people.linaro.org/~neil.williams/vm_groups/arndale-ubuntu-vm-groups.img.gz",
+                "image": "http://images.validation.linaro.org/functional-test-images/arndale/arndale-ubuntu-vm-groups.img.gz",
                 "role": "host"
             }
         },
         {
             "command": "deploy_linaro_kernel",
             "parameters": {
-                "kernel": "http://people.linaro.org/~neil.williams/vm_groups/zImage",
-                "rootfs": "http://people.linaro.org/~neil.williams/vm_groups/kvm.qcow2.gz",
-                "dtb": "http://people.linaro.org/~neil.williams/vm_groups/vexpress-v2p-ca15-tc1.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/vm_groups/zImage",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/vm_groups/kvm.qcow2.gz",
+                "dtb": "http://images.validation.linaro.org/functional-test-images/vm_groups/vexpress-v2p-ca15-tc1.dtb",
                 "role": "vm"
             }
         },

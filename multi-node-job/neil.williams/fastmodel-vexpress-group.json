@@ -18,7 +18,7 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://community.validation.linaro.org/images/armv8-foundation/vexpress64-openembedded_minimal-armv8_20130820-436.img.gz",
+                "image": "http://images.validation.linaro.org/functional-test-images/armv8-foundation/vexpress64-openembedded_minimal-armv8_20130820-436.img.gz",
                 "role": "model"
             }
         },
@@ -26,8 +26,8 @@
             "command": "deploy_linaro_image",
             "parameters": {
                 "bootloadertype": "uefi",
-                "hwpack": "http://community.validation.linaro.org/images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
-                "rootfs": "http://community.validation.linaro.org/images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
+                "hwpack": "http://images.validation.linaro.org/functional-test-images/armv7-fastmodel/hwpack_linaro-vexpress_20130811-427_armhf_supported.tar.gz",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/armv7-fastmodel/linaro-raring-nano-lava-20130811-459.tar.gz",
                 "role": "express"
             }
         },
