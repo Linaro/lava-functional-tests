@@ -8,7 +8,7 @@
                 "bootloadertype": "uefi",
                 "dtb": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/fvp-base-gicv2-psci.dtb",
                 "kernel": "http://images.validation.linaro.org/functional-test-images/armv8-fvp/Image",
-                "ramdisk": "http://images.validation.linaro.org/functional-test-images/common/linaro-image-minimal-initramfs-genericarmv8-20140522-680.rootfs.cpio.gz"
+                "ramdisk": "http://images.validation.linaro.org/functional-test-images/common/linaro-image-minimal-initramfs-genericarmv8-20140605-682.rootfs.cpio.gz"
             }
         },
         {
