@@ -5,7 +5,7 @@
             "parameters": {
                 "dtb": "http://images.validation.linaro.org/functional-test-images/arndale/exynos5250-arndale.dtb",
                 "kernel": "http://images.validation.linaro.org/functional-test-images/arndale/uImage",
-                "nfsrootfs": "http://images.validation.linaro.org/functional-test-images/common/linaro-trusty-server-20140522-661.tar.gz"
+                "nfsrootfs": "http://images.validation.linaro.org/functional-test-images/common/linaro-trusty-nano-lava-20140821-681.tar.gz"
             }
         },
         {
