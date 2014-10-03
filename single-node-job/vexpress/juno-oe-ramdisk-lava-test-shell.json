@@ -3,10 +3,12 @@
   "logging_level": "DEBUG",
   "actions": [
     {
-            "command": "deploy_linaro_image",
+            "command": "deploy_linaro_kernel",
             "parameters": {
-                "image": "http://images.validation.linaro.org/functional-test-images/vexpress/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140530-656.img.gz",
-                "bootloadertype": "uefi"
+                "bootloadertype": "uefi",
+                "dtb": "http://images.validation.linaro.org/functional-test-images/vexpress/juno.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/vexpress/Image",
+                "ramdisk": "http://images.validation.linaro.org/functional-test-images/common/linaro-image-minimal-initramfs-genericarmv8-20140605-682.rootfs.cpio.gz"
             }
     },
     {
@@ -29,5 +31,5 @@
     }
   ],
   "timeout": 18000,
-  "job_name": "juno-oe-lava-test-shell"
+  "job_name": "juno-oe-ramdisk-lava-test-shell"
 }
