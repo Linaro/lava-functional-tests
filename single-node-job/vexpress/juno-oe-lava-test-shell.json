@@ -1,5 +1,5 @@
 {
-  "device_type": "wg",
+  "device_type": "juno",
   "logging_level": "DEBUG",
   "actions": [
     {
@@ -29,5 +29,5 @@
     }
   ],
   "timeout": 18000,
-  "job_name": "wg-oe-lava-test-shell"
+  "job_name": "juno-oe-lava-test-shell"
 }

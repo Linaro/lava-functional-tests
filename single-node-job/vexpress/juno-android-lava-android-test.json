@@ -1,5 +1,5 @@
 {
-  "device_type": "wg",
+  "device_type": "juno",
   "logging_level": "DEBUG",
   "actions": [
     {
@@ -38,5 +38,5 @@
     }
   ],
   "timeout": 18000,
-  "job_name": "wg-android-lava-android-test"
+  "job_name": "juno-android-lava-android-test"
 }
