@@ -2,13 +2,14 @@
   "device_type": "juno",
   "logging_level": "DEBUG",
   "actions": [
-    {
+{
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://images.validation.linaro.org/functional-test-images/vexpress/vexpress64-openembedded_minimal-armv8-gcc-4.8_20140530-656.img.gz",
+                "hwpack": "http://images.validation.linaro.org/functional-test-images/vexpress/hwpack_linaro-lt-vexpress64-rtsm_20140823-686_arm64_supported.tar.gz",
+                "rootfs": "http://images.validation.linaro.org/functional-test-images/vexpress/linaro-image-minimal-genericarmv8-20140923-713.rootfs.tar.gz",
                 "bootloadertype": "uefi"
             }
-    },
+        },
     {
             "command": "lava_test_shell",
             "parameters": {
