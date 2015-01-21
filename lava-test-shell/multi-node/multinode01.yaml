@@ -33,4 +33,4 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-dhclient --shell dhclient -v eth0
         - lava-test-case linux-linaro-ubuntu-route-dump-c --shell route
         - lava-test-case multinode-get-network --shell lava-wait network
-        - lava-test-case multinode-lava-network --shell ./multinode/check_ip.sh
+        - lava-test-case multinode-lava-network --shell ./multi-node/check_ip.sh
