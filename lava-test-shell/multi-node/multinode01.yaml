@@ -28,7 +28,7 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
-        - lava-test-case multinode-send-network --shell lava-send network hostname=$(hostname) fqdn=$(hostname -f) ip=$(./multinode/get_ip.sh)
+        - lava-test-case multinode-send-network --shell lava-send network hostname=$(hostname) fqdn=$(hostname -f) ip=$(./multi-node/get_ip.sh)
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-down --shell ifconfig eth0 down
         - lava-test-case linux-linaro-ubuntu-route-dhclient --shell dhclient -v eth0
         - lava-test-case linux-linaro-ubuntu-route-dump-c --shell route
