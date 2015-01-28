@@ -32,7 +32,7 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
         - lava-test-case ping-test --shell ping -W1 -c1 validation.linaro.org
-        - lava-test-case realpath-check --shell realpath ./multinode/check_ip.sh
+        - lava-test-case realpath-check --shell realpath ./multi-node/check_ip.sh
         - lava-test-case ntpdate-check --shell ntpdate-debian
         - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
