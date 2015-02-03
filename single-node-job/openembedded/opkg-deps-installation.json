@@ -1,0 +1,55 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "dtb": "http://people.linaro.org/~georgy.redkozubov/oe/images/omap4-panda.dtb",
+                "kernel": "http://people.linaro.org/~georgy.redkozubov/oe/images/uImage-panda",
+                "nfsrootfs": "http://people.linaro.org/~georgy.redkozubov/oe/images/linaro-image-lamp-genericarmv7a-20141121-301.rootfs.tar.gz"
+            }
+        },
+        {
+            "command": "lava_command_run",
+            "parameters": {
+                "commands": [
+                    "echo src/gz all http://people.linaro.org/~georgy.redkozubov/oe/ipk/ > /etc/opkg/all.conf"
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/people/georgy.redkozubov/test-definitions.git",
+                        "testdef": "opkg-yes.yaml"
+                    }
+                ],
+                "timeout": 600
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/people/georgy.redkozubov/test-definitions.git",
+                        "testdef": "opkg-no.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "panda",
+    "job_name": "panda-oe-ipk-install",
+    "timeout": 1800
+}
