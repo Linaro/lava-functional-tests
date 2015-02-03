@@ -1,0 +1,55 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "dtb": "http://images.validation.linaro.org/functional-test-images/panda/omap4-panda-es.dtb",
+                "kernel": "http://images.validation.linaro.org/functional-test-images/panda/uImage",
+                "nfsrootfs": "http://images.validation.linaro.org/oe/linaro-image-lamp-genericarmv7a-20141121-301.rootfs.tar.gz"
+            }
+        },
+        {
+            "command": "lava_command_run",
+            "parameters": {
+                "commands": [
+                    "echo src/gz all http://images.validation.linaro.org/oe/ipk/ > /etc/opkg/all.conf"
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
+                        "testdef": "single-node-job/openembedded/opkg-yes.yaml"
+                    }
+                ],
+                "timeout": 600
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
+                        "testdef": "single-node-job/openembedded/opkg-no.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "LAVA_SERVER",
+                "stream": "BUNDLE_STREAM"
+            }
+        }
+    ],
+    "device_type": "panda",
+    "job_name": "panda-oe-ipk-install",
+    "timeout": 1800
+}

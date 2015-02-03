@@ -1,0 +1,21 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: opkg-deps-known-package
+    description: "Basic test for handling installation of non-existing OPKG deps"
+    maintainer:
+        - neil.williams@linaro.org    
+    os:
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - panda
+
+install:
+    deps:
+        - zd1211-firmware
+
+run:
+    steps:
+        - lava-test-case oe-pwd --shell pwd
+        - lava-test-case oe-uname --shell uname -a
