@@ -1,0 +1,19 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: opkg-deps-unknown-package
+    description: "Basic test for handling installation of non-existing OPKG deps"
+    os:
+        - openembedded
+    scope:
+        - functional
+    devices:
+        - panda
+
+install:
+    deps:
+        - xset
+
+run:
+    steps:
+        - lava-test-case oe-pwd --shell pwd
+        - lava-test-case oe-uname --shell uname -a
