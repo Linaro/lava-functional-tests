@@ -43,7 +43,7 @@
         "testdef_repos": [
           {
             "git-repo": "git://git.linaro.org/qa/test-definitions.git",
-            "testdef": "ubuntu/dmidecode.yaml"
+            "testdef": "common/dmidecode.yaml"
           }
         ],
         "timeout": 9600
