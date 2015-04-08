@@ -1,0 +1,40 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "dtb": "http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/sun7i-a20-cubietruck.dtb",
+                "kernel": "http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/zImage",
+                "ramdisk": "http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/linaro-image-minimal-initramfs-genericarmv7a-20150113-315.rootfs.cpio.gz.u-boot"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "ubuntu/smoke-tests-basic.yaml"
+                    },
+                    {
+                        "git-repo": "http://git.linaro.org/git/lava-team/lava-functional-tests.git",
+                        "testdef": "lava-test-shell/single-node/singlenode03.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results_on_host",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ],
+    "device_type": "cubietruck",
+    "health_check": false,
+    "job_name": "cubietruck-single-node",
+    "logging_level": "DEBUG",
+    "timeout": 900
+}
