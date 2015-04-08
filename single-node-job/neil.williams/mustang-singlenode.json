@@ -32,8 +32,8 @@
         {
             "command": "submit_results",
             "parameters": {
-                "server": "http://staging.validation.linaro.org/RPC2/",
-                "stream": "/anonymous/codehelp/"
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
             }
         }
     ],
