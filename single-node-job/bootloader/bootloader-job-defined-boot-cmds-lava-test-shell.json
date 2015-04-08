@@ -15,9 +15,9 @@
        "parameters": {
           "boot_cmds": ["setenv autoload no",
                         "setenv pxefile_addr_r '0x50000000'",
-                        "setenv kernel_addr_r '0x80200000'",
-                        "setenv initrd_addr_r '0x81000000'",
-                        "setenv fdt_addr_r '0x815f0000'",
+                        "setenv kernel_addr_r '0x81000000'",
+                        "setenv initrd_addr_r '0x8200000'",
+                        "setenv fdt_addr_r '0x81f00000'",
                         "setenv initrd_high '0xffffffff'",
                         "setenv fdt_high '0xffffffff'",
                         "setenv loadkernel 'tftp ${kernel_addr_r} {KERNEL}'",
