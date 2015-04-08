@@ -1,0 +1,43 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_kernel",
+            "metadata": {
+                "distribution": "debian"
+            },
+            "parameters": {
+                "dtb": "http://images-internal/mustang/mustang.dtb_1.11",
+                "kernel": "http://images-internal/mustang/uImage_1.11",
+                "login_prompt": "login:",
+                "nfsrootfs": "http://people.linaro.org/~neil.williams/arm64/debian-jessie-arm64-rootfs.tar.gz",
+                "target_type": "ubuntu",
+                "username": "root"
+            }
+        },
+        {
+            "command": "boot_linaro_image"
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/people/neil.williams/temp-functional-tests.git",
+                        "testdef": "singlenode/singlenode03.yaml"
+                    }
+                ],
+                "timeout": 900
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "http://staging.validation.linaro.org/RPC2/",
+                "stream": "/anonymous/codehelp/"
+            }
+        }
+    ],
+    "device_type": "mustang",
+    "job_name": "mustang-singlenode-jessie",
+    "timeout": 900
+}
