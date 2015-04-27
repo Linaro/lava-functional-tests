@@ -1,0 +1,22 @@
+{
+    "device_type": "qemu-aarch64",
+    "health_check": false,
+    "job_name": "qemu-aarch64-uefi-prebuilt-boot",
+    "logging_level": "DEBUG",
+    "timeout": 3600,
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://images.validation.linaro.org/functional-test-images/qemu-aarch64/vexpress64-openembedded_minimal-armv8-gcc-4.9_20140823-686.img.gz"
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ]
+}
