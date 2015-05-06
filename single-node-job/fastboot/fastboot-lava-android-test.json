@@ -6,12 +6,23 @@
   "logging_level": "DEBUG",
   "actions": [
     {
-      "command": "deploy_linaro_android_image",
-      "parameters": {
-        "data": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/userdata.img",
-        "system": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/system.img",
-        "boot": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/boot.img"
-      }
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "images": [
+                {
+                    "partition": "boot",
+                    "url": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/boot.img"
+                },
+                {
+                    "partition": "userdata",
+                    "url": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/userdata.img"
+                },
+                {
+                    "partition": "system",
+                    "url": "http://images.validation.linaro.org/functional-test-images/galaxy-nexus/system.img"
+                }
+            ]
+        }
     },
     {
         "command": "boot_linaro_android_image",

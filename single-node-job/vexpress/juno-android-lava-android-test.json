@@ -3,13 +3,24 @@
   "logging_level": "DEBUG",
   "actions": [
     {
-            "command": "deploy_linaro_android_image",
-            "parameters": {
-                "boot": "http://images.validation.linaro.org/functional-test-images/vexpress/boot.tar.bz2",
-                "bootloadertype": "uefi",
-                "data": "http://images.validation.linaro.org/functional-test-images/vexpress/userdata.tar.bz2",
-                "system": "http://images.validation.linaro.org/functional-test-images/vexpress/system.tar.bz2"
-            }
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "images": [
+                {
+                    "partition": "boot",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/boot.tar.bz2"
+                },
+                {
+                    "partition": "userdata",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/userdata.tar.bz2"
+                },
+                {
+                    "partition": "system",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/system.tar.bz2"
+                }
+            ],
+          "bootloadertype": "uefi"
+        }
     },
     {
             "command": "boot_linaro_android_image",
