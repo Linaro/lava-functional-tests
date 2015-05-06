@@ -1,35 +1,45 @@
 {
     "actions": [
-        {
-            "command": "deploy_linaro_android_image",
-            "parameters": {
-                "boot": "http://images.validation.linaro.org/functional-test-images/vexpress/boot.tar.bz2",
-                "data": "http://images.validation.linaro.org/functional-test-images/vexpress/userdata.tar.bz2",
-                "system": "http://images.validation.linaro.org/functional-test-images/vexpress/system.tar.bz2"
-            }
-        },
-        {
-            "command": "boot_linaro_android_image"
-        },
-        {
-            "command": "lava_test_shell",
-            "parameters": {
-                "testdef_repos": [
-                    {
-                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
-                        "testdef": "common/pm-qa.yaml"
-                    }
-                ]
-            }
-        },
-        {
-            "command": "submit_results",
-            "parameters": {
-                "server": "LAVA_SERVER",
-                "stream": "BUNDLE_STREAM"
-            }
+      {
+        "command": "deploy_linaro_android_image",
+        "parameters": {
+            "images": [
+                {
+                    "partition": "boot",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/boot.tar.bz2"
+                },
+                {
+                    "partition": "userdata",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/userdata.tar.bz2"
+                },
+                {
+                    "partition": "system",
+                    "url": "http://images.validation.linaro.org/functional-test-images/vexpress/system.tar.bz2"
+                }
+            ]
         }
-    ],
+      },
+      {
+          "command": "boot_linaro_android_image"
+      },
+      {
+          "command": "lava_test_shell",
+          "parameters": {
+              "testdef_repos": [
+                  {
+                      "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                      "testdef": "common/pm-qa.yaml"
+                  }
+              ]
+          }
+      },
+      {
+          "command": "submit_results",
+          "parameters": {
+              "server": "LAVA_SERVER",
+              "stream": "BUNDLE_STREAM"
+          }
+      }],
     "device_type": "vexpress-tc2",
     "image_type": "android",
     "job_name": "vexpress-tc2-android-lava-test-shell",
