@@ -1,0 +1,32 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "parameters": {
+                "image": "http://images.validation.linaro.org/kvm/large-jessie.img.gz"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "http://git.linaro.org/git/people/neil.williams/temp-functional-tests.git",
+                        "testdef": "lava/server-release-unit-tests.yaml"
+                    }
+                ]
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "server": "http://validation.linaro.org/RPC2",
+                "stream": "/public/personal/lava-auto/lava-daily/"
+            }
+        }
+    ],
+    "device_type": "kvm",
+    "job_name": "server-master-unit-tests",
+    "logging_level": "DEBUG",
+    "timeout": 1800
+}
