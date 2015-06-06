@@ -46,11 +46,11 @@ run:
         - modprobe loop || true
         - cd lava-dispatcher
         - git log -n1
-        - ../lava/version-wrapper.py
+        - ../unit-tests/lava/version-wrapper.py
         - lava-test-case pep8 --shell pep8 --ignore E501 .
-        - ../lava/unittests.sh
-        - ../lava/fixme-report.sh
-        - ../lava/pylint.sh "lava_dispatcher/pipeline"
+        - ../unit-tests/lava/unittests.sh
+        - ../unit-tests/lava/fixme-report.sh
+        - ../unit-tests/lava/pylint.sh "lava_dispatcher/pipeline"
 
 parse:
     pattern: "(?P<test_case_id>.*) ... (?P<result>(ok|FAIL))"

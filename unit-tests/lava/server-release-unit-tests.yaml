@@ -53,7 +53,7 @@ run:
         - cd lava-server
         - git checkout release
         - git log -n1
-        - ../lava/version-wrapper.py
+        - ../unit-tests/lava/version-wrapper.py
         - lava-test-case unit-tests --shell ./ci-run -v2
 
 parse:

@@ -52,7 +52,7 @@ run:
         - DEBIAN_FRONTEND=noninteractive apt-get -y install -o Dpkg::Options::="--force-confold" lava-dispatcher lava-server
         - cd lava-server
         - git log -n1
-        - ../lava/version-wrapper.py
+        - ../unit-tests/lava/version-wrapper.py
         - lava-test-case unit-tests --shell ./ci-run -v2
 
 parse:
