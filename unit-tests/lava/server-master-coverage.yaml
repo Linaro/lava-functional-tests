@@ -1,0 +1,38 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: lava-server-master-coverage
+    description: "LAVA server master branch coverage on Debian unstable"
+    "version": "1.0"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+
+# dependencies must be installed by the unit-tests definition
+
+install:
+    deps:
+        - python-coverage
+    git-repos:
+        - git://git.linaro.org/lava/lava-server.git
+
+# coverage needs to be run inside a script which can make
+# each test name unique and produce a valid result.
+run:
+    steps:
+        - cd lava-server
+        - git log -n1
+        - ../lava/version-wrapper.py
+        - python-coverage run -p --omit "/usr/lib/pymodules/python2.7/openid/extensions/draft/*,/usr/share/pyshared/*" lava_server/manage.py test dashboard_app
+        - python-coverage run -p --omit "/usr/lib/pymodules/python2.7/openid/extensions/draft/*,/usr/share/pyshared/*" lava_server/manage.py test lava_scheduler_app
+        - python-coverage run -p --omit "/usr/share/pyshared/*" lava_server/manage.py test lava_scheduler_daemon
+        - python-coverage run -p --omit "/usr/lib/pymodules/python2.7/openid/extensions/draft/*,/usr/share/pyshared/*" lava_server/manage.py test linaro_django_xmlrpc.tests
+        - python-coverage combine
+        - ../lava/coverage-wrapper.py
+
+parse:
+    pattern: (?P<test_case_id>[a-z\/_]+)\s+\d+\s+\d+\s+(?P<measurement>\d+)(?P<units>%)$

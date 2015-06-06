@@ -1,0 +1,48 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: lava-dispatcher-master-unit-tests
+    description: "LAVA dispatcher master branch unit tests on Debian unstable"
+    "version": "1.0"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+
+# These tests need at least 512M of RAM in the KVM
+# Check the mem_cpu option in the kvm.conf device_type.
+
+install:
+    deps:
+        - git
+        - pep8
+        - python-lzma
+        - python-serial
+        - python-configglue
+        - python-pexpect
+        - lava-tool
+        - python-requests
+        - python-testscenarios
+    git-repos:
+        - git://git.linaro.org/lava/lava-dispatcher.git
+
+
+run:
+    steps:
+        - apt-get -y install -o Dpkg::Options::="--force-confold" lava-dispatcher
+        - cd lava-dispatcher
+        - git log -n1
+        - git checkout -b review
+        - git pull https://review.linaro.org/lava/lava-dispatcher $PULLREFS
+        - git log -n1
+        - lava-test-case unit-tests --shell ./ci-run
+        - lava-test-case pipeline --shell python -m unittest discover lava_dispatcher/pipeline/
+
+parse:
+    pattern: "(?P<test_case_id>.*_*) .* ... (?P<result>(ok|FAIL))"
+    fixupdict:
+        ok: pass
+        FAIL: fail

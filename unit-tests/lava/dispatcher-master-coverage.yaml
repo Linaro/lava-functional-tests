@@ -1,0 +1,45 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: lava-dispatcher-master-coverage
+    description: "LAVA dispatcher master branch coverage on Debian unstable"
+    "version": "1.0"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+
+# These tests need at least 512M of RAM in the KVM
+# Check the mem_cpu option in the kvm.conf device_type.
+
+install:
+    deps:
+        - git
+        - pep8
+        - python-lzma
+        - python-serial
+        - python-configglue
+        - python-pexpect
+        - lava-tool
+        - python-requests
+        - python-testscenarios
+        - python-setuptools
+        - python-coverage
+        - pylint
+        - u-boot-tools
+        - nfs-kernel-server
+    git-repos:
+        - git://git.linaro.org/lava/lava-dispatcher.git
+
+run:
+    steps:
+        - cd lava-dispatcher
+        - git log -n1
+        - ../lava/version-wrapper.py
+        - python-coverage run --omit "/usr/share/pyshared/*" setup.py test
+        - ../lava/coverage-wrapper.py
+        - ../lava/fixme-report.sh
+        - pylint -d line-too-long -d missing-docstring

@@ -1,0 +1,63 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: lava-server-unit-tests
+    description: "LAVA server release branch unit tests on Debian Jessie"
+    "version": "1.0"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - kvm
+
+# The dependencies need a KVM of at least 2Gb in size.
+
+# These tests need at least 512M of RAM in the KVM
+# Check the mem_cpu option in the kvm.conf device_type.
+
+install:
+    deps:
+        - git
+        - pep8
+        - lava-tool
+        - python-psycopg2
+        - postgresql-9.4
+        - postgresql-client-9.4
+        - python-dateutil
+        - python-django
+        - python-django-south
+        - python-django-tables2
+        - python-django-auth-openid
+        - python-django-restricted-resource
+        - python-pygments
+        - python-simplejson
+        - python-twisted
+        - django-testscenarios
+        - python-mocker
+        - python-markdown
+        - python-markupsafe
+        - python-netifaces
+    git-repos:
+        - git://git.linaro.org/lava/lava-server.git
+
+run:
+    steps:
+        # fix up the hosts file before installing apache
+        - echo 127.0.0.1   localhost `hostname` >> /etc/hosts
+        - lava-test-case uwsgi --shell apt -y install apache2 libapache2-mod-wsgi libapache2-mod-uwsgi
+        # devscripts needs to be installed without recommended packages.
+        - lava-test-case devscripts --shell apt --no-install-recommends -y install devscripts
+        - DEBIAN_FRONTEND=noninteractive apt-get -y install -o Dpkg::Options::="--force-confold" lava-dispatcher lava-server
+        - cd lava-server
+        - git checkout release
+        - git log -n1
+        - ../lava/version-wrapper.py
+        - lava-test-case unit-tests --shell ./ci-run -v2
+
+parse:
+    pattern: "(?P<test_case_id>.*_*) .* ... (?P<result>(ok|FAIL))"
+    fixupdict:
+        ok: pass
+        FAIL: fail
