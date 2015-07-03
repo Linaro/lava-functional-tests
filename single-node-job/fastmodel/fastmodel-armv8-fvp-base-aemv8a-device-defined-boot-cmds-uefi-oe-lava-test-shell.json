@@ -30,5 +30,5 @@
     "device_type": "rtsm_fvp_base-aemv8a",
     "job_name": "fastmodel-armv8-fvp-base-aemv8a-device-defined-boot-cmds-uefi-oe-lava-test-shell",
     "logging_level": "DEBUG",
-    "timeout": 20000
+    "timeout": 900
 }
