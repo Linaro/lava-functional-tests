@@ -30,6 +30,7 @@ install:
         - python-django-south
         - python-django-tables2
         - python-django-auth-openid
+        - python-django-auth-ldap
         - python-django-restricted-resource
         - python-pygments
         - python-simplejson
