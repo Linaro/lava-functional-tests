@@ -49,6 +49,6 @@ run:
         - lava-test-case ntpdate-check --shell ntpdate-debian
         - lava-test-case direct-update --shell apt-get update
         - lava-test-case direct-install --shell apt-get -y install curl
-        - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
-        - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
-        - lava-test-case remove-tgz --shell rm netperf-2.6.0.tar.gz
+        - lava-test-case curl-http --shell curl -o img.tar.gz http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/cbtruck_img.tar.gz
+        - lava-test-case tar-tgz --shell tar -tzf img.tar.gz
+        - lava-test-case remove-tgz --shell rm img.tar.gz
