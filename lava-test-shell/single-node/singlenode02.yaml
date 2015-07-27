@@ -2,6 +2,7 @@ metadata:
     format: Lava-Test Test Definition 1.0
     name: singlenode-intermediate
     description: "Intermediate (level 2): single node test commands for Linux Linaro ubuntu Images"
+    version: 1
     maintainer:
         - neil.williams@linaro.org
     os:
@@ -26,7 +27,6 @@ run:
         - lava-test-case ping-test --shell ping -W1 -c1 validation.linaro.org
         - lava-test-case direct-update --shell apt-get -q -y update
         - lava-test-case direct-install --shell apt-get -q -y install curl
-        - lava-test-case curl-ftp --shell curl -o netperf-2.6.0.tar.gz ftp://ftp.netperf.org/netperf/netperf-2.6.0.tar.gz
-        - lava-test-case tar-tgz --shell tar -tzf netperf-2.6.0.tar.gz
-        - lava-test-case remove-tgz --shell rm netperf-2.6.0.tar.gz
-        
+        - lava-test-case curl-http --shell curl -o img.tar.gz http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/cbtruck_img.tar.gz
+        - lava-test-case tar-tgz --shell tar -tzf img.tar.gz
+        - lava-test-case remove-tgz --shell rm img.tar.gz
