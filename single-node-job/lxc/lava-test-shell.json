@@ -1,0 +1,37 @@
+{
+  "timeout": 18000,
+  "job_name": "lxc-lava-test-shell",
+  "device_type": "lxc",
+  "logging_level": "DEBUG",
+  "actions": [
+    {
+      "command": "deploy_lxc_image",
+      "parameters":
+        {
+          "name": "ubuntu-trusty-amd64",
+          "target_type": "ubuntu",
+          "release": "trusty",
+          "arch": "amd64"
+        }
+    },
+    {
+      "command": "lava_test_shell",
+      "parameters": {
+        "testdef_repos": [
+          {
+            "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+            "testdef": "ubuntu/smoke-tests-basic.yaml"
+          }
+        ],
+        "timeout": 9600
+      }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    }
+  ]
+}
