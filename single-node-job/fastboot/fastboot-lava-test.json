@@ -1,0 +1,101 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_android_image",
+            "metadata": {
+                "android.build": "92",
+                "android.name": "linaro-android_nexus9-aosp-master",
+                "android.url": "https://android-build.linaro.org/jenkins/job/linaro-android_nexus9-aosp-master/92/"
+            },
+            "parameters": {
+                "images": [
+                    {
+                        "fastboot": [
+                            "format cache"
+                        ]
+                    },
+                    {
+                        "fastboot": [
+                            "erase userdata"
+                        ]
+                    },
+                    {
+                        "partition": "boot",
+                        "url": "http://images.validation.linaro.org/functional-test-images/nexus9/boot.img.gz"
+                    },
+                    {
+                        "partition": "system",
+                        "url": "http://images.validation.linaro.org/functional-test-images/nexus9/system.img.gz"
+                    },
+                    {
+                        "partition": "userdata",
+                        "url": "http://images.validation.linaro.org/functional-test-images/nexus9/userdata.img.gz"
+                    },
+                    {
+                        "partition": "vendor",
+                        "url": "http://images.validation.linaro.org/functional-test-images/nexus9/vendor.img.gz"
+                    }
+                ]
+            }
+        },
+        {
+            "command": "boot_linaro_android_image",
+            "parameters": {
+                "test_image_prompt": "shell@flounder"
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "lava_test_dir": "/data/local/tmp/lava",
+                "lava_test_results_dir": "/local/tmp/lava",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "android/busybox.yaml"
+                    }
+                ],
+                "timeout": 1800
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "lava_test_dir": "/data/local/tmp/lava",
+                "lava_test_results_dir": "/local/tmp/lava",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "android/boottime.yaml"
+                    }
+                ],
+                "timeout": 1800
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "lava_test_dir": "/data/local/tmp/lava",
+                "lava_test_results_dir": "/local/tmp/lava",
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "android/ping_dns.yaml"
+                    }
+                ],
+                "timeout": 1800
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "stream": "BUNDLE_STREAM",
+                "server": "LAVA_SERVER"
+            }
+        }
+    ],
+    "device_type": "nexus9",
+    "image_type": "android",
+    "job_name": "linaro-android_nexus9-aosp-master-92",
+    "timeout": 18000
+}

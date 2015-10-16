@@ -1,0 +1,57 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_android_image",
+            "metadata": {
+                "android.build": "471",
+                "android.name": "juno-m",
+                "android.url": "https://android-build.linaro.org/jenkins/job/linaro-android_lcr-reference-juno/471/"
+            },
+            "parameters": {
+                "bootloadertype": "uefi",
+                "images": [
+                    {
+                        "partition": "boot",
+                        "url": "http://images.validation.linaro.org/functional-test-images/juno/android-m-boot.tar.bz2"
+                    },
+                    {
+                        "partition": "userdata",
+                        "url": "http://images.validation.linaro.org/functional-test-images/juno/android-m-userdata.tar.bz2"
+                    },
+                    {
+                        "partition": "system",
+                        "url": "http://images.validation.linaro.org/functional-test-images/juno/android-m-system.tar.bz2"
+                    }
+                ]
+            }
+        },
+        {
+            "command": "boot_linaro_android_image",
+            "parameters": {
+                "boot_cmds": [
+                    "expect Start:",
+                    "sendline 2",
+                    "expect in 5 seconds to skip",
+                    "sendcontrol [",
+                    "sendcontrol [",
+                    "expect Shell>",
+                    "sendline kernel dtb=juno.dtb console=ttyAMA0,115200 initrd=ramdisk.img earlyprintk=pl011,0x7ff80000 verbose debug androidboot.hardware=juno androidboot.selinux=permissive",
+                    "sendcontrol M"
+                ],
+                "enable_network_after_boot_android": false,
+                "test_image_prompt": "shell@juno"
+            }
+        }
+    },
+    {
+      "command": "submit_results",
+      "parameters": {
+        "stream": "BUNDLE_STREAM",
+        "server": "LAVA_SERVER"
+      }
+    ],
+    "device_type": "juno",
+    "image_type": "android",
+    "job_name": "juno-image-uefi-android-m",
+    "timeout": 72000
+}
