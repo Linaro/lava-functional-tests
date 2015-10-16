@@ -58,6 +58,13 @@
                 ],
                 "timeout": 1800
             }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+                "stream": "/private/team/wg/wg-private/",
+                "server": "LAVA_SERVER"
+            }
         }
     ],
     "device_type": "juno",
