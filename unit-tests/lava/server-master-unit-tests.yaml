@@ -40,6 +40,7 @@ install:
         - python-markdown
         - python-markupsafe
         - python-netifaces
+        - node-uglify
     git-repos:
         - git://git.linaro.org/lava/lava-server.git
 

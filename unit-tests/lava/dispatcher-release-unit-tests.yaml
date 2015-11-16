@@ -37,6 +37,8 @@ install:
         - qemu-system-x86
         - python-nose
         - python-zmq
+        - android-tools-adb
+        - android-tools-fastboot
     git-repos:
         - git://git.linaro.org/lava/lava-dispatcher.git
 
