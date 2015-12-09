@@ -1,0 +1,47 @@
+{
+    "actions": [
+        {
+            "command": "deploy_linaro_image",
+            "metadata": {
+                "distribution": "openembedded",
+                "hwpack.build": "latest",
+                "hwpack.type": "vexpress64"
+            },
+            "parameters": {
+                "bootloadertype": "uefi",
+                "image": "https://releases.linaro.org/openembedded/juno-lsk/latest/lt-vexpress64-openembedded_minimal-armv8-gcc-4.9_20151120-735.img.gz"
+            }
+        },
+        {
+            "command": "boot_linaro_image",
+            "parameters": {
+                "options": [
+                    "cluster0.NUM_CORES=4",
+                    "cluster1.NUM_CORES=4"
+                ]
+            }
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "git://git.linaro.org/qa/test-definitions.git",
+                        "testdef": "openembedded/smoke-tests-basic.yaml"
+                    }
+                ],
+                "timeout": 800
+            }
+        },
+        {
+            "command": "submit_results",
+            "parameters": {
+               "stream": "BUNDLE_STREAM",
+               "server": "LAVA_SERVER"
+            }
+        }
+    ],
+    "device_type": "rtsm_fvp_base-aemv8a",
+    "job_name": "OE Boot test rtsm_fvp_base-aemv8a 2*4 - 15.11",
+    "timeout": 172800
+}
