@@ -37,6 +37,7 @@ install:
         - qemu-system-x86
         - python-nose
         - python-zmq
+        - python-configobj
         - android-tools-adb
         - android-tools-fastboot
     git-repos:
