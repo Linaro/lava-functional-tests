@@ -55,7 +55,7 @@ run:
         - apt -y -q upgrade
         # devscripts needs to be installed without recommended packages.
         - lava-test-case devscripts --shell apt --no-install-recommends -y install devscripts
-        - DEBIAN_FRONTEND=noninteractive apt-get -y install -o Dpkg::Options::="--force-confold" lava-dispatcher lava-server
+        - DEBIAN_FRONTEND=noninteractive apt-get -y -t jessie-backports install -o Dpkg::Options::="--force-confold" lava-dispatcher lava-server
         - cd lava-server
         - git log -n1
         - ../unit-tests/lava/version-wrapper.py
