@@ -49,6 +49,10 @@ run:
         # fix up the hosts file before installing apache
         - echo 127.0.0.1   localhost `hostname` >> /etc/hosts
         - lava-test-case uwsgi --shell apt -y install apache2 libapache2-mod-wsgi libapache2-mod-uwsgi
+        - echo "deb http://mirror.bytemark.co.uk/debian jessie-backports main" > /etc/apt/sources.list.d/lava-backports.list
+        - apt -q update
+        - apt -y -t jessie-backports install python-django-kvstore
+        - apt -y -q upgrade
         # devscripts needs to be installed without recommended packages.
         - lava-test-case devscripts --shell apt --no-install-recommends -y install devscripts
         - DEBIAN_FRONTEND=noninteractive apt-get -y install -o Dpkg::Options::="--force-confold" lava-dispatcher lava-server
