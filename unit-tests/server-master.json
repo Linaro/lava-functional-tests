@@ -3,7 +3,9 @@
         {
             "command": "deploy_linaro_image",
             "parameters": {
-                "image": "http://images.validation.linaro.org/kvm/large-jessie.img.gz"
+                "image": "http://snapshots.linaro.org/components/lava/standard/debian/jessie/amd64/4/large-stable.img.gz",
+                "login_prompt": "login:",
+                "username": "root"
             }
         },
         {
