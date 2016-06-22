@@ -1,10 +1,10 @@
 metadata:
     format: Lava-Test Test Definition 1.0
-    name: params-test
-    description: "test commands for Linux Linaro ubuntu Images with params"
+    name: parameters-test
+    description: "test commands for Linux Linaro ubuntu Images with parameters"
     version: "1.0"
     maintainer:
-        - neil.williams@linaro.org
+        - senthil.kumaran@linaro.org
     os:
         - ubuntu
     scope:
@@ -16,7 +16,7 @@ metadata:
         - beaglebone-black
         - beagle-xm
 
-params:
+parameters:
     VARIABLE_NAME_1: value_1
     VARIABLE_NAME_2: value_2
 
