@@ -1,7 +1,7 @@
 metadata:
     format: Lava-Test Test Definition 1.0
-    name: parameters-test
-    description: "test commands for Linux Linaro ubuntu Images with parameters"
+    name: params-test
+    description: "test commands for Linux Linaro ubuntu Images with params"
     version: "1.0"
     maintainer:
         - neil.williams@linaro.org
