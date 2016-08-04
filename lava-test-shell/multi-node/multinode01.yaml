@@ -1,7 +1,7 @@
 metadata:
     format: Lava-Test Test Definition 1.0
     name: multinode-basic-level
-    description: "Basic (level 1) MultiNode test commands for Linux Linaro ubuntu Images"
+    description: "Basic (level 1) MultiNode test commands for Linux Images"
     maintainer:
         - neil.williams@linaro.org
     os:
@@ -15,11 +15,9 @@ metadata:
         - beaglebone-black
         - beagle-xm
 
-params:
-    # the helper gets in the way here
-    # lava-network needs to be replaced by a custom script
-    # which understands the image, not rely on a generic helper.
-    iface: eth0
+# Dropped 'get_ip' and 'check_ip' as these are not able to keep up with
+# changes in the output of the relevant commands. Custom scripts are
+# needed which understand the tools within the target image.
 
 run:
     steps:
@@ -31,12 +29,3 @@ run:
         - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
         - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
         - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
-        - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig $iface up
-        - lava-test-case multinode-send-network --shell lava-send network hostname=$(hostname) fqdn=$(hostname -f) ip=$(./lava-test-shell/multi-node/get_ip.sh)
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-down --shell ifconfig $iface down
-        - lava-test-case linux-linaro-ubuntu-route-dhclient --shell dhclient -v $iface
-        - lava-test-case linux-linaro-ubuntu-route-dump-c --shell route
-        - lava-test-case multinode-get-network --shell lava-wait network
-        - lava-test-case multinode-lava-network --shell ./lava-test-shell/multi-node/check_ip.sh
