@@ -15,6 +15,12 @@ metadata:
         - beaglebone-black
         - beagle-xm
 
+params:
+    # the helper gets in the way here
+    # lava-network needs to be replaced by a custom script
+    # which understands the image, not rely on a generic helper.
+    iface: eth0
+
 run:
     steps:
         - lava-test-case multinode-role-output --shell lava-role
@@ -27,10 +33,10 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig $iface up
         - lava-test-case multinode-send-network --shell lava-send network hostname=$(hostname) fqdn=$(hostname -f) ip=$(./lava-test-shell/multi-node/get_ip.sh)
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-down --shell ifconfig eth0 down
-        - lava-test-case linux-linaro-ubuntu-route-dhclient --shell dhclient -v eth0
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-down --shell ifconfig $iface down
+        - lava-test-case linux-linaro-ubuntu-route-dhclient --shell dhclient -v $iface
         - lava-test-case linux-linaro-ubuntu-route-dump-c --shell route
         - lava-test-case multinode-get-network --shell lava-wait network
         - lava-test-case multinode-lava-network --shell ./lava-test-shell/multi-node/check_ip.sh
