@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-#set -x
+set -x
 echo "Testing all members in the group"
 for line in `lava-group | sed -e 's/\(.*\)\s.*/\1/'` ; do
 	# get the ipv4 for this device
