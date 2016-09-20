@@ -22,7 +22,6 @@
 #  
 #  
 
-import yaml
 import argparse
 import xmlrpclib
 import subprocess
