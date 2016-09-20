@@ -15,6 +15,12 @@ metadata:
         - beaglebone-black
         - beagle-xm
 
+install:
+    deps:
+       - net-tools
+       - iputils-ping
+       - lsb-release
+
 run:
     steps:
         - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
@@ -23,6 +29,7 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - cat /etc/resolv.conf
         - lava-test-case ping-test --shell ping -W1 -c1 validation.linaro.org
         - lava-test-case direct-update --shell apt-get -q -y update
         - lava-test-case direct-install --shell apt-get -q -y install curl
