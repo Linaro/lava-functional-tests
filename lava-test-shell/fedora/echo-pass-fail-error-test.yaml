@@ -1,0 +1,23 @@
+metadata:
+    name: fail-pass-error
+    format: "Lava-Test-Shell Test Definition 1.0"
+    description: "Pass / Fail / Error test."
+    maintainer:
+        - senthil.kumaran@linaro.org
+    os:
+        - fedora
+    devices:
+        - lxc
+    scope:
+        - functional
+
+run:
+    steps:
+        - ./lava-test-shell/fedora/scripts/echo-pass-fail-error.sh
+
+parse:
+    pattern: "(?P<test_case_id>.*)\\s+(?P<result>PASS|FAIL|ERROR)\\s+"
+    fixupdict:
+        ERROR: fail
+        FAIL: fail
+        PASS: pass
