@@ -18,4 +18,4 @@ install:
 
 run:
     steps:
-        - lava-test-case adb-serial --shell "./scripts/get-adb-serial.sh"
+        - lava-test-case adb-serial --shell "./lava-test-shell/android/scripts/get-adb-serial.sh"
