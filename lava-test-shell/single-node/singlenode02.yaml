@@ -30,7 +30,7 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
         - cat /etc/resolv.conf
-        - lava-test-case ping-test --shell ping -W1 -c1 validation.linaro.org
+        - lava-test-case ping-test --shell ping -W1 -c1 www.linaro.org
         - lava-test-case direct-update --shell apt-get -q -y update
         - lava-test-case direct-install --shell apt-get -q -y install curl
         - lava-test-case curl-http --shell curl -o img.tar.gz http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/cbtruck_img.tar.gz
