@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 result="$(adb get-serialno)"
 echo $result
