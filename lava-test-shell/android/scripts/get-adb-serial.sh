@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-result="$(adb get-serialno)"
-echo $result
+serial_no="$(adb get-serialno)"
+echo $serial_no
 
-if [ $result = "unknown" ]; then
+if [ $serial_no = "unknown" ]; then
     exit 1
 else
     exit 0
