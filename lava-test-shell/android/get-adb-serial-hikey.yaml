@@ -1,0 +1,23 @@
+metadata:
+    name: get-adb-serial-number-hikey
+    format: "Lava-Test-Shell Test Definition 1.0"
+    description: "Gets the adb serial number for HiKey"
+    maintainer:
+        - senthil.kumaran@linaro.org
+    os:
+        - debian
+    devices:
+        - lxc
+    scope:
+        - functional
+
+install:
+    deps:
+        - android-tools-adb
+        - android-tools-fastboot
+
+run:
+    steps:
+        - lava-lxc-device-add
+        - adb start-server
+        - lava-test-case adb-serial --shell "./lava-test-shell/android/scripts/get-adb-serial.sh"
