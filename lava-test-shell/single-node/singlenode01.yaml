@@ -15,7 +15,7 @@ metadata:
         - beaglebone-black
 
 params:
-    INTERFACE=eth0
+    INTERFACE: eth0
 
 run:
     steps:
