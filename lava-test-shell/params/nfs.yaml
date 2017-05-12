@@ -17,10 +17,6 @@ metadata:
 params:
     INTERFACE: eth0
 
-install:
-    deps:
-      - net-tools
-
 run:
     steps:
         - lava-test-case clean-resolv --shell rm -f /etc/resolv.conf
