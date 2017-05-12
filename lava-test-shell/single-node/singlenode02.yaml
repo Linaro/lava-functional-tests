@@ -5,15 +5,17 @@ metadata:
     maintainer:
         - neil.williams@linaro.org
     os:
-        - ubuntu
+        - debian
     scope:
         - functional
     devices:
-        - kvm
+        - qemu
         - arndale
         - panda
         - beaglebone-black
-        - beagle-xm
+
+params:
+    INTERFACE=eth0
 
 install:
     deps:
@@ -23,12 +25,14 @@ install:
 
 run:
     steps:
+        - lava-test-case clean-resolv --shell rm -f /etc/resolv.conf
+        - lava-test-case nfs-dns --shell ./scripts/nfs-dns.sh $INTERFACE
         - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
         - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
         - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
-        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig eth0 up
+        - lava-test-case linux-linaro-ubuntu-route-ifconfig-up --shell ifconfig $INTERFACE up
         - cat /etc/resolv.conf
         - lava-test-case ping-test --shell ping -W1 -c1 www.linaro.org
         - lava-test-case direct-update --shell apt-get -q -y update
