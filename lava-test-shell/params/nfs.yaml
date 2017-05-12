@@ -1,0 +1,29 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: configure-nfs-dns
+    description: "Additional support for NFS to use DNS"
+    maintainer:
+        - neil.williams@linaro.org
+    os:
+        - debian
+    scope:
+        - functional
+    devices:
+        - qemu
+        - arndale
+        - panda
+        - beaglebone-black
+
+params:
+    INTERFACE: eth0
+
+install:
+    deps:
+      - net-tools
+
+run:
+    steps:
+        - lava-test-case clean-resolv --shell rm -f /etc/resolv.conf
+        - lava-test-case nfs-dns --shell ./scripts/nfs-dns.sh $INTERFACE
+        - lava-test-case resolv --shell cat /etc/resolv.conf
+        - ifconfig -a
