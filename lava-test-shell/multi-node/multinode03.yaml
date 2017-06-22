@@ -28,18 +28,21 @@ install:
 # changes in the output of the relevant commands. Custom scripts are
 # needed which understand the tools within the target image.
 
+# calls to sync, wait and send are no longer hidden behind a
+# lava-test-case, results are reported directly.
+
 run:
     steps:
         - lava-test-case multinode-role-output --shell lava-role
-        - lava-test-case multinode-sync --shell lava-sync running
-        - lava-test-case multinode-send-message --shell lava-send sending source=$(lava-self) role=$(lava-role) hostname=$(hostname -f) kernver=$(uname -r) kernhost=$(uname -n)
+        - lava-sync running
+        - lava-send sending source=$(lava-self) role=$(lava-role) hostname=$(hostname -f) kernver=$(uname -r) kernhost=$(uname -n)
         - lava-test-case multinode-group --shell lava-group
         - lava-test-case linux-linaro-ubuntu-netstat --shell netstat -an
         - lava-test-case linux-linaro-ubuntu-ifconfig-dump --shell ifconfig -a
         - lava-test-case linux-linaro-ubuntu-route-dump-a --shell route
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
-        - lava-test-case multinode-wait --shell lava-wait-all sending
+        - lava-wait-all sending
         - lava-test-case ntpdate-check --shell ntpdate-debian
         - lava-test-case curl-http --shell curl -o img.tar.gz http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/cbtruck_img.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf img.tar.gz
