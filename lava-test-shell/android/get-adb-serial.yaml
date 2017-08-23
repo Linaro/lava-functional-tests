@@ -13,6 +13,8 @@ metadata:
 
 install:
     deps:
+        - adb
+        - fastboot
         - android-tools-adb
         - android-tools-fastboot
 
