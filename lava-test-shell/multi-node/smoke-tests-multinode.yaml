@@ -16,12 +16,6 @@ metadata:
         - beagle-xm
         - mx53loco
 
-install:
-    deps:
-        - procps
-        - lsb-release
-        - usbutils
-
 run:
     steps:
         - lava-test-case linux-linaro-ubuntu-pwd --shell pwd

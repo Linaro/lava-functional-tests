@@ -17,11 +17,6 @@ metadata:
         - vexpress-tc2
         - juno
 
-install:
-    deps:
-        - procps
-        - lsb-release
-
 run:
     steps:
         - lava-test-case linux-linaro-ubuntu-pwd --shell pwd
