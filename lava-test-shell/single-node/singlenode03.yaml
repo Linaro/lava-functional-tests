@@ -17,7 +17,6 @@ metadata:
 install:
     deps:
         - curl
-        - realpath
         - lsb-release
         - usbutils
         - net-tools
@@ -30,7 +29,6 @@ run:
         - lava-test-case linux-linaro-ubuntu-route-ifconfig-up-lo --shell ifconfig lo up
         - lava-test-case linux-linaro-ubuntu-route-dump-b --shell route
         - lava-test-case ping-test --shell ping -W1 -c1 www.linaro.org
-        - lava-test-case realpath-check --shell realpath ./lava-test-shell/multi-node/check_ip.sh
         - lava-test-case curl-http --shell curl -o img.tar.gz http://images.validation.linaro.org/lava-masters/dynamic/cubietruck/cbtruck_img.tar.gz
         - lava-test-case tar-tgz --shell tar -tzf img.tar.gz
         - lava-test-case remove-tgz --shell rm img.tar.gz
